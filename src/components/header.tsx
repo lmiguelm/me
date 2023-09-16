@@ -1,12 +1,12 @@
 import { Code2 } from "lucide-react";
 import Link from "next/link";
 
-import { Menu as MenuComponent } from "@/components/Menu";
+import { Menu as MenuComponent } from "@/components/menu";
 
 import { socialMedia } from "@/utils/social-media";
-import { MediaSocialIconLink } from "./MediaSocialIconLink";
-import { NavigationLinks } from "./NavigationLinks";
-import { ToggleThemeButton } from "./ToggleThemeButton";
+import { MediaSocialIconLink } from "./media-social-icon-link";
+import { NavigationLinks } from "./navigation-links";
+import { ToggleThemeButton } from "./toggle-theme-button";
 
 export function Header() {
   return (
@@ -27,18 +27,18 @@ export function Header() {
 
       <div className="flex items-center justify-center space-x-1">
         <MediaSocialIconLink
-          icon={socialMedia.github.icon}
-          url={socialMedia.github.url}
+          icon={socialMedia.GitHub.icon}
+          url={socialMedia.GitHub.url}
         />
 
         <MediaSocialIconLink
-          icon={socialMedia.linkedin.icon}
-          url={socialMedia.linkedin.url}
+          icon={socialMedia.LinkedIn.icon}
+          url={socialMedia.LinkedIn.url}
         />
 
         <MediaSocialIconLink
-          icon={socialMedia.instagram.icon}
-          url={socialMedia.instagram.url}
+          icon={socialMedia.Instagram.icon}
+          url={socialMedia.Instagram.url}
         />
 
         <ToggleThemeButton />

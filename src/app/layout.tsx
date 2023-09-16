@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 
 import { ThemeProvider } from "@/contexts/theme-provider";
 
-import { Header } from "@/components/Header";
 import "../global.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { inter } from "./fonts";
 
 export const metadata: Metadata = {
-  title: "lmiguelm",
+  title: "< lmiguelm />",
   description: "Portfólio de Luis Miguel",
 };
 
@@ -19,11 +16,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning suppressContentEditableWarning>
+    <html lang="pt-BR" suppressHydrationWarning suppressContentEditableWarning>
+      <head>
+        <link rel="icon" href="/avatar.jpg" sizes="32x32" type="image/x-icon" />
+        <link rel="icon" href="/avatar.jpg" sizes="16x16" type="image/x-icon" />
+      </head>
+
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
-          <Header />
-
           {children}
         </ThemeProvider>
       </body>

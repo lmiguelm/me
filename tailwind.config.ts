@@ -22,6 +22,7 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        highlight: "hsl(var(--highlight))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -65,10 +66,33 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        border: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+        teste: {
+          "0%": {
+            transfom: "rotateX(25deg)",
+          },
+          "25%": {
+            transfom: "rotateX(25deg) scale(0.9)",
+          },
+          "60%, 100%": {
+            transfom: "none",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        border: "border 4s ease infinite",
+        teste: "teste 1.4s ease",
+      },
+      height: {
+        "full-with-header": "calc(100vh - 3.5rem)",
+      },
+      padding: {
+        "0.25": "0.0625rem",
       },
     },
   },
