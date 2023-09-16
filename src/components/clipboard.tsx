@@ -29,12 +29,16 @@ export function Clipboard({ textToBeCopied, position = "left" }: Props) {
       )}
     >
       {hasCopied ? (
-        <CheckCircle2 className="h-4 w-4 text-green-500 max-sm:hidden" />
+        <CheckCircle2 className="flex-1 h-4 w-4 text-green-500" />
       ) : (
-        <Copy className="h-4 w-4 text-muted-foreground max-sm:hidden" />
+        <Copy className="flex-1 h-4 w-4 text-muted-foreground" />
       )}
 
-      <span className="text-muted-foreground">{textToBeCopied}</span>
+      <div className="flex-1 max-sm:w-10/12">
+        <p className="text-muted-foreground text-ellipsis overflow-hidden ...">
+          {textToBeCopied}
+        </p>
+      </div>
     </Button>
   );
 }

@@ -70,15 +70,15 @@ module.exports = {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
         },
-        teste: {
-          "0%": {
-            transfom: "rotateX(25deg)",
+        tilt: {
+          "0%, 50%, 100%": {
+            transform: "rotate(0deg)",
           },
           "25%": {
-            transfom: "rotateX(25deg) scale(0.9)",
+            transform: "rotate(0.5deg)",
           },
-          "60%, 100%": {
-            transfom: "none",
+          "75%": {
+            transform: "rotate(-0.5deg)",
           },
         },
       },
@@ -86,7 +86,7 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         border: "border 4s ease infinite",
-        teste: "teste 1.4s ease",
+        tilt: "tilt 10s infinite linear",
       },
       height: {
         "full-with-header": "calc(100vh - 3.5rem)",
