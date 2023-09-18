@@ -14,9 +14,16 @@ type Props = {
 export function Clipboard({ textToBeCopied, position = "left" }: Props) {
   const [hasCopied, setHasCopied] = useState<boolean>(false);
 
-  function handleCopy() {
+  async function handleCopy() {
     navigator.clipboard.writeText(textToBeCopied);
     setHasCopied(true);
+    await delay();
+    setHasCopied(false);
+  }
+
+  function delay() {
+    const delay = 3000; // 3 seconds
+    return new Promise((resolve) => setTimeout(resolve, delay));
   }
 
   return (
