@@ -6,7 +6,10 @@ import "../global.css";
 import { inter } from "./fonts";
 
 export const metadata: Metadata = {
-  title: "< lmiguelm />",
+  title: {
+    template: "lmiguelm | %s",
+    default: "lmiguelm",
+  },
   description: "Portfólio de Luis Miguel",
 };
 

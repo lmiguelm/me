@@ -5,7 +5,7 @@ import { AspectRatio } from "./ui/aspect-ratio";
 
 export function ProjectCard() {
   return (
-    <Tooltip message="Project Name ">
+    <Tooltip message="Project Name">
       <Link href="#">
         <div className="overflow-hidden">
           <AspectRatio ratio={16 / 9}>
@@ -13,8 +13,8 @@ export function ProjectCard() {
               height={500}
               width={500}
               alt="project"
-              src="/_f82d7182-c059-4bcd-abc2-fbae4003b2f7.jpg"
-              className="rounded transition-transform hover:scale-125"
+              src="/thumbnail.svg"
+              className="rounded transition-transform hover:scale-105"
             />
           </AspectRatio>
         </div>

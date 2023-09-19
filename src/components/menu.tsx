@@ -1,7 +1,7 @@
 import { Code2, Menu as MenuIcon } from "lucide-react";
 import Link from "next/link";
 
-import { ButtonIcon } from "./ButtonIcon";
+import { ButtonIcon } from "./button-icon";
 
 import { routesNames } from "@/utils/routes";
 import { Separator } from "./ui/separator";

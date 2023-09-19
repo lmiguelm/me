@@ -10,10 +10,10 @@ import { ToggleThemeButton } from "./toggle-theme-button";
 
 export function Header() {
   return (
-    <header className="w-full h-14 flex p items-center justify-around max-sm:justify-between max-sm:px-3 border-b">
+    <header className="w-full h-14 flex p items-center justify-around max-sm:justify-between max-sm:px-3 border-b bg-background">
       <div className="flex items-center justify-center">
         <Link
-          href="#"
+          href="/"
           className="flex items-center justify-center gap-2 pr-4 sm:hover:scale-110 transition-all"
         >
           <Code2 className="max-sm:hidden" />

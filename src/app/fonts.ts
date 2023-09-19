@@ -15,7 +15,7 @@ export const ubuntu_700 = Ubuntu({
   subsets: ["latin"],
 });
 
-export const ubuntu_500 = Exo_2({
+export const exo_2 = Exo_2({
   weight: "600",
   subsets: ["latin"],
 });
