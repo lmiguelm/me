@@ -3,6 +3,7 @@ import NextLink, { LinkProps } from "next/link";
 type Props = Partial<LinkProps> & {
   title: string;
   target?: string;
+  rel?: string;
 };
 
 export function Link({ title, ...props }: Props) {

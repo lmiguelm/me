@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { LinearBackground } from "@/components/linear-background";
 import "../../global.css";
@@ -20,10 +21,12 @@ export default function RootLayout({
 
       <LinearBackground
         variant="secondary"
-        className=" flex flex-col max-lg:py-[30px] space-y-20 px-[30%] max-md:px-[30px]"
+        className=" flex flex-col pb-[90px] space-y-20 px-[30%] max-md:px-[30px]"
       >
         {children}
       </LinearBackground>
+
+      <Footer />
     </>
   );
 }

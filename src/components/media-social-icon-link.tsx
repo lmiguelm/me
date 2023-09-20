@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { ElementType } from "react";
+import { ComponentProps, ElementType } from "react";
 
 import { ButtonIcon } from "./button-icon";
-import { ButtonProps } from "./ui/button";
 
-type Props = ButtonProps & {
+type Props = ComponentProps<typeof ButtonIcon> & {
   icon: ElementType;
   url: string;
 };

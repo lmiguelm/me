@@ -31,7 +31,6 @@ export default function Projects() {
       <ProjectCardDetail alt="teste" src="/imc-app.svg" />
       <Separator />
       <ProjectCardDetail alt="teste" src="/imc-app.svg" />
-      <Separator />
     </>
   );
 }
