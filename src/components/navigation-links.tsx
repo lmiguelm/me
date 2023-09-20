@@ -17,16 +17,16 @@ export function NavigationLinks() {
   return (
     <NavigationMenu className="max-sm:hidden">
       <NavigationMenuList className="flex gap-2">
-        {routesNames.map((route) => (
-          <NavigationMenuItem key={route}>
-            <Link href="/" legacyBehavior passHref>
+        {routesNames.map(({ name, path }) => (
+          <NavigationMenuItem key={path}>
+            <Link href={path} legacyBehavior passHref>
               <NavigationMenuLink
                 className={navigationMenuTriggerStyle({
                   className:
                     "text-muted-foreground bg-transparent hover:bg-transparent",
                 })}
               >
-                {route}
+                {name}
               </NavigationMenuLink>
             </Link>
           </NavigationMenuItem>

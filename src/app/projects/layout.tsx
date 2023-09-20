@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { Header } from "@/components/header";
+import { LinearBackground } from "@/components/linear-background";
 import "../../global.css";
 
 export const metadata: Metadata = {
@@ -17,7 +18,12 @@ export default function RootLayout({
     <>
       <Header />
 
-      {children}
+      <LinearBackground
+        variant="secondary"
+        className=" flex flex-col max-lg:py-[30px] space-y-20 px-[30%] max-md:px-[30px]"
+      >
+        {children}
+      </LinearBackground>
     </>
   );
 }

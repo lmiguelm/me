@@ -1,1 +1,10 @@
-export const routesNames = ["Home", "Sobre", "Projetos", "Contato"];
+export const routesNames = [
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "Portfólio",
+    path: "/projects",
+  },
+];

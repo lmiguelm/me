@@ -1,5 +1,6 @@
 import { Code2, Menu as MenuIcon } from "lucide-react";
 import Link from "next/link";
+import { Fragment } from "react";
 
 import { ButtonIcon } from "./button-icon";
 
@@ -30,16 +31,16 @@ export function Menu() {
         </SheetHeader>
 
         <div>
-          {routesNames.map((route) => (
-            <>
-              <Link href="#">
+          {routesNames.map(({ name, path }) => (
+            <Fragment key={path}>
+              <Link href={path}>
                 <div className="w-full py-3 mt-3">
-                  <span className="text-sm">{route}</span>
+                  <span className="text-sm">{name}</span>
                 </div>
               </Link>
 
               <Separator />
-            </>
+            </Fragment>
           ))}
         </div>
       </SheetContent>
