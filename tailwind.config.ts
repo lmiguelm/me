@@ -88,13 +88,35 @@ module.exports = {
         border: "border 4s ease infinite",
         tilt: "tilt 10s infinite linear",
       },
-      height: {
-        "full-with-header": "calc(100vh - 3.5rem)",
+      minHeight: {
+        "full-with-header-and-footer": "calc(100vh - 3.5rem - 20rem)",
       },
       padding: {
         "0.25": "0.0625rem",
       },
+      typography: () => ({
+        system: {
+          css: {
+            "--tw-prose-body": "hsl(var(--muted-foreground))",
+            "--tw-prose-headings": "hsl(var(--primary))",
+            "--tw-prose-lead": "hsl(var(--muted-foreground))",
+            "--tw-prose-links": "hsl(var(--muted-foreground))",
+            "--tw-prose-bold": "hsl(var(--muted-foreground))",
+            "--tw-prose-counters": "hsl(var(--muted-foreground))",
+            "--tw-prose-bullets": "hsl(var(--muted-foreground))",
+            "--tw-prose-hr": "hsl(var(--muted-foreground))",
+            "--tw-prose-quotes": "hsl(var(--muted-foreground))",
+            "--tw-prose-quote-borders": "hsl(var(--muted-foreground))",
+            "--tw-prose-captions": "hsl(var(--muted-foreground))",
+            "--tw-prose-code": "hsl(var(--muted-foreground))",
+            "--tw-prose-pre-code": "hsl(var(--primary))",
+            "--tw-prose-pre-bg": "hsl(var(--secondary))",
+            "--tw-prose-th-borders": "hsl(var(--muted-foreground))",
+            "--tw-prose-td-borders": "hsl(var(--muted-foreground))",
+          },
+        },
+      }),
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };

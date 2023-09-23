@@ -5,6 +5,7 @@ const nextConfig = {
       "lmguelm-portfolio-images.s3-sa-east-1.amazonaws.com",
       "firebasestorage.googleapis.com",
       "github.com",
+      "images.prismic.io",
     ],
   },
 };

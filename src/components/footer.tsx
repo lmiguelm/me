@@ -17,9 +17,11 @@ export function Footer() {
         ))}
       </div>
 
-      <div className="flex space-x-3 text-sm">
+      <div className="flex items-center max-sm:flex-col space-x-3 text-sm">
         <p>Portfólio de Luis Miguel © {new Date().getFullYear()}</p>
-        <span>•</span>
+
+        <span className="max-sm:hidden">•</span>
+
         <p>
           Publicado com{" "}
           <Link

@@ -5,7 +5,7 @@ import { Tooltip } from "./tooltip";
 export function ProjectCard() {
   return (
     <Tooltip message="Project Name">
-      <Link href="#">
+      <Link href="/projects/example">
         <Image
           height={500}
           width={500}

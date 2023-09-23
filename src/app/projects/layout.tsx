@@ -21,7 +21,7 @@ export default function RootLayout({
 
       <LinearBackground
         variant="secondary"
-        className=" flex flex-col pb-[90px] space-y-20 px-[30%] max-md:px-[30px]"
+        className="min-h-full-with-header-and-footer flex flex-col py-[90px] px-[30%] max-md:px-[30px]"
       >
         {children}
       </LinearBackground>

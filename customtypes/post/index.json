@@ -1,0 +1,108 @@
+{
+  "id": "post",
+  "label": "Post",
+  "format": "custom",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "thumbnail": {
+        "type": "Image",
+        "config": {
+          "label": "thumbnail",
+          "constraint": {
+            "width": 1920,
+            "height": 1080
+          },
+          "thumbnails": []
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
+        }
+      },
+      "resume": {
+        "type": "Text",
+        "config": {
+          "label": "resume",
+          "placeholder": ""
+        }
+      },
+      "repository": {
+        "type": "Link",
+        "config": {
+          "label": "repository",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "select": null
+        }
+      },
+      "application": {
+        "type": "Link",
+        "config": {
+          "label": "application",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null
+        }
+      },
+      "content": {
+        "type": "StructuredText",
+        "config": {
+          "label": "content",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "video": {
+        "type": "Link",
+        "config": {
+          "label": "video",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "carousel": {
+        "type": "Group",
+        "config": {
+          "label": "carousel",
+          "fields": {
+            "image": {
+              "type": "Image",
+              "config": {
+                "label": "image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "tags": {
+        "type": "Group",
+        "config": {
+          "label": "tags",
+          "fields": {
+            "tag": {
+              "type": "Text",
+              "config": {
+                "label": "tag",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
