@@ -6,6 +6,7 @@ import { AnimatedBorderEffect } from "@/components/animated-border-effect";
 import { FloatActions } from "@/components/float-actions";
 import { Link } from "@/components/link";
 import { MotionDiv } from "@/components/motion-div";
+import { formatUrlParam } from "@/utils/url-param";
 
 type Props = {
   params: {
@@ -113,7 +114,11 @@ export default async function Page({ params }: Props) {
 
                     <div className="flex gap-3 text-muted-foreground">
                       {tags.map((tag) => (
-                        <Link key={tag} title={tag} href={`/tags/${tag}`} />
+                        <Link
+                          key={tag}
+                          title={tag}
+                          href={`/projects/tag/${formatUrlParam(tag)}`}
+                        />
                       ))}
                     </div>
                   </div>
