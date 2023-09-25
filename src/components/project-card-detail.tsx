@@ -40,7 +40,7 @@ export function ProjectCardDetail({ reverse = false, data }: Props) {
           <NextLink
             href={data.url}
             data-reverse={reverse}
-            className="flex flex-col data-[reverse=true]:items-end hover:text-muted-foreground transition-all space-y-2"
+            className="flex w-full flex-col data-[reverse=true]:items-end hover:text-muted-foreground transition-all space-y-2"
           >
             <Subtitle>{data.title}</Subtitle>
 
@@ -55,7 +55,7 @@ export function ProjectCardDetail({ reverse = false, data }: Props) {
             {data.tags.map((tag) => (
               <Link
                 key={tag}
-                href={`/tag/${formatUrlParam(tag)}`}
+                href={`/projects/tag/${formatUrlParam(tag)}`}
                 title={tag}
               />
             ))}
