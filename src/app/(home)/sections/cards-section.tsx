@@ -9,7 +9,7 @@ export async function CardsSection() {
   const projects = await client.getAllByType("project");
 
   const { years: experience } = intervalToDuration({
-    start: new Date(2018, 1, 1),
+    start: new Date(2020, 1, 1),
     end: new Date(),
   });
 
