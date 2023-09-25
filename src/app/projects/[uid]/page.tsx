@@ -4,6 +4,7 @@ import { PrismicRichText } from "@prismicio/react";
 
 import { AnimatedBorderEffect } from "@/components/animated-border-effect";
 import { FloatActions } from "@/components/float-actions";
+import { Link } from "@/components/link";
 import { MotionDiv } from "@/components/motion-div";
 
 type Props = {
@@ -16,8 +17,10 @@ export default async function Page({ params }: Props) {
   const client = createClient();
 
   const response = await client.getByUID("post", params.uid, {
-    fetchOptions: { next: { revalidate: 60 * 10 } }, // 10 min
+    fetchOptions: { next: { revalidate: 60 * 60 * 24 } }, // 1 day
   });
+
+  const { tags, data } = response;
 
   const {
     application,
@@ -25,11 +28,10 @@ export default async function Page({ params }: Props) {
     content,
     repository,
     resume,
-    tags,
     thumbnail,
     title,
     video,
-  } = response.data;
+  } = data;
 
   return (
     <>
@@ -46,7 +48,7 @@ export default async function Page({ params }: Props) {
 
             <div className="flex flex-col items-center p-[5%] space-y-20">
               <header className="flex flex-col items-center justify-center space-y-3">
-                <h1 className="text-2xl text-center leading-relaxed">
+                <h1 className="text-2xl leading-relaxed font-semibold">
                   {title}
                 </h1>
 
@@ -74,14 +76,14 @@ export default async function Page({ params }: Props) {
                 </div>
               </header>
 
-              <main className="prose prose-system max-sm:prose-sm text-justify">
+              <main className="prose prose-system max-sm:prose-sm text-justify prose-headings:">
                 <PrismicRichText field={content} />
               </main>
 
               <footer className="flex flex-col gap-20">
                 {!!carousel.length && (
                   <div className="flex flex-col space-y-3">
-                    <p className="text-muted-foreground">📸 Algumas imagens:</p>
+                    <p>📸 Imagens</p>
 
                     <div className="flex gap-3 overflow-x-auto pb-3">
                       {carousel.map(({ image }) => (
@@ -99,19 +101,23 @@ export default async function Page({ params }: Props) {
 
                 {(video as any).url && (
                   <div className="flex flex-col space-y-3">
-                    <p className="text-muted-foreground">
-                      📽️ Vídeo de demonstração:
-                    </p>
+                    <p>📽️ Vídeo de demonstração</p>
 
                     <video src={(video as any).url} controls />
                   </div>
                 )}
 
-                <div className="flex gap-3 text-muted-foreground">
-                  {tags.map(({ tag }) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
-                </div>
+                {!!tags.length && (
+                  <div className="flex flex-col gap-3">
+                    <p>🔗 Tags </p>
+
+                    <div className="flex gap-3 text-muted-foreground">
+                      {tags.map((tag) => (
+                        <Link key={tag} title={tag} href={`/tags/${tag}`} />
+                      ))}
+                    </div>
+                  </div>
+                )}
               </footer>
             </div>
           </div>

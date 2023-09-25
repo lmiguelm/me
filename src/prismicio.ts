@@ -27,8 +27,6 @@ const routes: prismic.ClientConfig["routes"] = [
  * @param config - Configuration for the Prismic client.
  */
 
-console.log({ env: process.env.PRISMIC_ACCESS_TOKEN });
-
 export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
   const client = prismic.createClient(repositoryName, {
     routes,

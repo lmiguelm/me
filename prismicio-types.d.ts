@@ -20,21 +20,6 @@ export interface PostDocumentDataCarouselItem {
 }
 
 /**
- * Item in *Post → tags*
- */
-export interface PostDocumentDataTagsItem {
-  /**
-   * tag field in *Post → tags*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: post.tags[].tag
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  tag: prismic.KeyTextField;
-}
-
-/**
  * Content for Post documents
  */
 interface PostDocumentData {
@@ -125,17 +110,6 @@ interface PostDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   carousel: prismic.GroupField<Simplify<PostDocumentDataCarouselItem>>;
-
-  /**
-   * tags field in *Post*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: post.tags[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  tags: prismic.GroupField<Simplify<PostDocumentDataTagsItem>>;
 }
 
 /**
@@ -165,7 +139,6 @@ declare module "@prismicio/client" {
       PostDocument,
       PostDocumentData,
       PostDocumentDataCarouselItem,
-      PostDocumentDataTagsItem,
       AllDocumentTypes,
     };
   }

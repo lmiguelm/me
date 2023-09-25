@@ -19,7 +19,7 @@ export function FloatActions() {
   );
   function handleClick() {
     if (window.scrollY === 0) {
-      return router.push("/");
+      return router.back();
     }
 
     return window.scrollTo({
@@ -29,7 +29,7 @@ export function FloatActions() {
   }
 
   return (
-    <div className="fixed top-[100px] right-[15%] space-y-6 max-lg:hidden">
+    <div className="fixed top-[150px] right-[15%] space-y-6 max-lg:hidden">
       <Button
         variant="secondary"
         className="flex items-center justify-center p-2"

@@ -87,21 +87,6 @@
             }
           }
         }
-      },
-      "tags": {
-        "type": "Group",
-        "config": {
-          "label": "tags",
-          "fields": {
-            "tag": {
-              "type": "Text",
-              "config": {
-                "label": "tag",
-                "placeholder": ""
-              }
-            }
-          }
-        }
       }
     }
   }
