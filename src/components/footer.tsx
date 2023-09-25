@@ -1,16 +1,20 @@
-import { socialMedia } from "@/utils/social-media";
+import { createClient } from "@/prismicio";
+import { socialMediaIcon } from "@/utils/social-media-icon";
 import { Link } from "./link";
 import { MediaSocialIconLink } from "./media-social-icon-link";
 
-export function Footer() {
+export async function Footer() {
+  const client = createClient();
+  const socialMedias = await client.getSingle("social_media");
+
   return (
     <footer className="w-full h-80 bg-secondary flex flex-col items-center justify-center space-y-4">
       <div className="flex space-x-2">
-        {Object.entries(socialMedia).map(([key, { icon, url }]) => (
+        {Object.entries(socialMedias.data).map(([key, { url }]: any) => (
           <MediaSocialIconLink
             key={key}
             url={url}
-            icon={icon}
+            icon={socialMediaIcon[key as keyof typeof socialMediaIcon]}
             variant="outline"
             iconClassName="w-6 h-6"
           />

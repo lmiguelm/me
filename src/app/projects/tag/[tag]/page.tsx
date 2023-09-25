@@ -1,11 +1,13 @@
 import React from "react";
 
+import { createClient } from "@/prismicio";
+import { filter } from "@prismicio/client";
+
 import { FloatActions } from "@/components/float-actions";
 import { ProjectCardDetail } from "@/components/project-card-detail";
 
 import { AnimatedSeparator } from "@/components/AnimatedSeparator";
 import { SubHeader } from "@/components/sub-header";
-import { createClient } from "@/prismicio";
 import { formatUrlParam, parseUrlParam } from "@/utils/url-param";
 
 type Props = {
@@ -30,21 +32,16 @@ export default async function Tag({ params }: Props) {
 
   const client = createClient();
 
-  const posts = await client.getAllByTag(parsedTag, {
-    fetchOptions: {
-      next: {
-        revalidate: 60 * 30, // 30 minutes
-      },
-    },
+  const projects = await client.getByType("project", {
+    filters: [filter.at("document.tags", [parsedTag])],
     orderings: {
       field: "document.first_publication_date",
       direction: "desc",
     },
+    fetch: ["project.title", "project.resume", "project.thumbnail"],
   });
 
-  console.log(posts);
-
-  const postQuantity = posts.length;
+  const projectQuantity = projects.results.length;
 
   return (
     <>
@@ -54,24 +51,24 @@ export default async function Tag({ params }: Props) {
         <SubHeader
           title={parsedTag}
           message={
-            postQuantity === 0
+            projectQuantity === 0
               ? "Nenhum projeto encontrado com esta tag."
-              : postQuantity === 1
-              ? `${postQuantity} projeto encontrado com esta tag.`
-              : `${postQuantity} projetos encontrado com esta tag.`
+              : projectQuantity === 1
+              ? `${projectQuantity} projeto encontrado com esta tag.`
+              : `${projectQuantity} projetos encontrado com esta tag.`
           }
         />
 
-        {posts.map((post, index) => (
-          <React.Fragment key={post.id}>
+        {projects.results.map((project, index) => (
+          <React.Fragment key={project.id}>
             <ProjectCardDetail
               reverse={index % 2 === 0}
               data={{
-                title: post.data.title,
-                resume: post.data.resume,
-                thumbnail: post.data.thumbnail,
-                url: post.url!,
-                tags: post.tags,
+                title: project.data.title,
+                resume: project.data.resume,
+                thumbnail: project.data.thumbnail,
+                url: project.url!,
+                tags: project.tags,
               }}
             />
 

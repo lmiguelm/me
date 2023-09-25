@@ -10,16 +10,12 @@ import { createClient } from "@/prismicio";
 export default async function Projects() {
   const client = createClient();
 
-  const posts = await client.getAllByType("post", {
-    fetchOptions: {
-      next: {
-        revalidate: 60 * 30, // 30 minutes
-      },
-    },
+  const projects = await client.getAllByType("project", {
     orderings: {
       field: "document.first_publication_date",
       direction: "desc",
     },
+    fetch: ["project.title", "project.resume", "project.thumbnail"],
   });
 
   return (
@@ -33,16 +29,16 @@ export default async function Projects() {
           trajetória, desde pessoais, até comerciais."
         />
 
-        {posts.map((post, index) => (
-          <React.Fragment key={post.id}>
+        {projects.map((project, index) => (
+          <React.Fragment key={project.id}>
             <ProjectCardDetail
               reverse={index % 2 === 0}
               data={{
-                title: post.data.title,
-                resume: post.data.resume,
-                thumbnail: post.data.thumbnail,
-                url: post.url!,
-                tags: post.tags,
+                title: project.data.title,
+                resume: project.data.resume,
+                thumbnail: project.data.thumbnail,
+                url: project.url!,
+                tags: project.tags,
               }}
             />
 

@@ -2,12 +2,16 @@ import { Code2 } from "lucide-react";
 
 import { Menu as MenuComponent } from "@/components/menu";
 
-import { socialMedia } from "@/utils/social-media";
+import { createClient } from "@/prismicio";
+import { socialMediaIcon } from "@/utils/social-media-icon";
 import { MediaSocialIconLink } from "./media-social-icon-link";
 import { NavigationLinks } from "./navigation-links";
 import { ToggleThemeButton } from "./toggle-theme-button";
 
-export function Header() {
+export async function Header() {
+  const client = createClient();
+  const socialMedias = await client.getSingle("social_media");
+
   return (
     <header className="w-full h-14 flex p items-center justify-around max-sm:justify-between max-sm:px-3 border-b bg-background">
       <div className="flex items-center justify-center">
@@ -22,20 +26,13 @@ export function Header() {
       </div>
 
       <div className="flex items-center justify-center space-x-1">
-        <MediaSocialIconLink
-          icon={socialMedia.GitHub.icon}
-          url={socialMedia.GitHub.url}
-        />
-
-        <MediaSocialIconLink
-          icon={socialMedia.LinkedIn.icon}
-          url={socialMedia.LinkedIn.url}
-        />
-
-        <MediaSocialIconLink
-          icon={socialMedia.Instagram.icon}
-          url={socialMedia.Instagram.url}
-        />
+        {Object.entries(socialMedias.data).map(([key, { url }]: any) => (
+          <MediaSocialIconLink
+            key={key}
+            icon={socialMediaIcon[key as keyof typeof socialMediaIcon]}
+            url={url}
+          />
+        ))}
 
         <ToggleThemeButton />
       </div>

@@ -1,0 +1,75 @@
+{
+  "id": "home",
+  "label": "Home",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "about": {
+        "type": "StructuredText",
+        "config": {
+          "label": "about",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "contact": {
+        "type": "StructuredText",
+        "config": {
+          "label": "contact",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "discord": {
+        "type": "Text",
+        "config": {
+          "label": "discord",
+          "placeholder": ""
+        }
+      },
+      "email": {
+        "type": "Text",
+        "config": {
+          "label": "email",
+          "placeholder": ""
+        }
+      },
+      "skills": {
+        "type": "Group",
+        "config": {
+          "label": "skills",
+          "fields": {
+            "skill": {
+              "type": "Image",
+              "config": {
+                "label": "skill",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "url": {
+              "type": "Link",
+              "config": {
+                "label": "url",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      },
+      "avatar": {
+        "type": "Image",
+        "config": {
+          "label": "avatar",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

@@ -17,7 +17,7 @@ type Props = {
 export default async function Page({ params }: Props) {
   const client = createClient();
 
-  const response = await client.getByUID("post", params.uid, {
+  const response = await client.getByUID("project", params.uid, {
     fetchOptions: { next: { revalidate: 60 * 60 * 24 } }, // 1 day
   });
 

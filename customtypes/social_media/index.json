@@ -1,0 +1,43 @@
+{
+  "id": "social_media",
+  "label": "Social Media",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "linkedin": {
+        "type": "Link",
+        "config": {
+          "label": "linkedin",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "github": {
+        "type": "Link",
+        "config": {
+          "label": "github",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "whatsapp": {
+        "type": "Link",
+        "config": {
+          "label": "whatsapp",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "instagram": {
+        "type": "Link",
+        "config": {
+          "label": "Instagram",
+          "placeholder": "",
+          "select": null
+        }
+      }
+    }
+  }
+}

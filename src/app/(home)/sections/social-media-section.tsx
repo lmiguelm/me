@@ -1,16 +1,19 @@
 import { LinearBackground } from "@/components/linear-background";
 import { MediaSocialIconLink } from "@/components/media-social-icon-link";
+import { createClient } from "@/prismicio";
+import { socialMediaIcon } from "@/utils/social-media-icon";
 
-import { socialMedia } from "@/utils/social-media";
+export async function SocialMediaSection() {
+  const client = createClient();
+  const socialMedias = await client.getSingle("social_media");
 
-export function SocialMediaSection() {
   return (
     <LinearBackground className="flex rounded-lg p-3 gap-3">
-      {Object.entries(socialMedia).map(([key, { icon, url }]) => (
+      {Object.entries(socialMedias.data).map(([key, { url }]: any) => (
         <MediaSocialIconLink
           key={key}
           url={url}
-          icon={icon}
+          icon={socialMediaIcon[key as keyof typeof socialMediaIcon]}
           variant="outline"
         />
       ))}

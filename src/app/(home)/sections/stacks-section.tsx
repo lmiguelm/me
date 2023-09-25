@@ -1,17 +1,28 @@
+import { createClient } from "@/prismicio";
+
 import { LinearBackground } from "@/components/linear-background";
 import { StackCard } from "@/components/stack-card";
 import { Subtitle } from "@/components/subtitle";
 
-import { skills } from "@/utils/skills";
+export async function StacksSection() {
+  const client = createClient();
 
-export function StacksSection() {
+  const { data } = await client.getSingle("home", {
+    fetch: ["home.skills"],
+  });
+
   return (
     <LinearBackground className="flex flex-col p-3 gap-6 rounded-xl">
       <Subtitle>Domínio técnico</Subtitle>
 
       <div className="grid grid-cols-8 max-sm:grid-cols-4 items-center gap-3">
-        {Object.entries(skills).map(([stack, { path, url }]) => (
-          <StackCard key={stack} alt={stack} src={path} url={url} />
+        {data.skills.map(({ skill, url: link }) => (
+          <StackCard
+            key={skill.alt}
+            alt={skill.alt!}
+            src={skill.url!}
+            url={(link as any).url}
+          />
         ))}
       </div>
     </LinearBackground>

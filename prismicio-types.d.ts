@@ -5,126 +5,306 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
- * Item in *Post → carousel*
+ * Item in *Home → skills*
  */
-export interface PostDocumentDataCarouselItem {
+export interface HomeDocumentDataSkillsItem {
   /**
-   * image field in *Post → carousel*
+   * skill field in *Home → skills*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: post.carousel[].image
+   * - **API ID Path**: home.skills[].skill
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  skill: prismic.ImageField<never>;
+
+  /**
+   * url field in *Home → skills*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.skills[].url
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  url: prismic.LinkField;
+}
+
+/**
+ * Content for Home documents
+ */
+interface HomeDocumentData {
+  /**
+   * about field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.about
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  about: prismic.RichTextField;
+
+  /**
+   * contact field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.contact
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  contact: prismic.RichTextField;
+
+  /**
+   * discord field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.discord
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  discord: prismic.KeyTextField;
+
+  /**
+   * email field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.email
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * skills field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.skills[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  skills: prismic.GroupField<Simplify<HomeDocumentDataSkillsItem>>;
+
+  /**
+   * avatar field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.avatar
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  avatar: prismic.ImageField<never>;
+}
+
+/**
+ * Home document from Prismic
+ *
+ * - **API ID**: `home`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+
+/**
+ * Item in *Project → carousel*
+ */
+export interface ProjectDocumentDataCarouselItem {
+  /**
+   * image field in *Project → carousel*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.carousel[].image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
 }
 
 /**
- * Content for Post documents
+ * Content for Project documents
  */
-interface PostDocumentData {
+interface ProjectDocumentData {
   /**
-   * thumbnail field in *Post*
+   * thumbnail field in *Project*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: post.thumbnail
+   * - **API ID Path**: project.thumbnail
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   thumbnail: prismic.ImageField<never>;
 
   /**
-   * title field in *Post*
+   * title field in *Project*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: post.title
+   * - **API ID Path**: project.title
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
 
   /**
-   * resume field in *Post*
+   * resume field in *Project*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: post.resume
+   * - **API ID Path**: project.resume
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   resume: prismic.KeyTextField;
 
   /**
-   * repository field in *Post*
+   * repository field in *Project*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: post.repository
+   * - **API ID Path**: project.repository
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   repository: prismic.LinkField;
 
   /**
-   * application field in *Post*
+   * application field in *Project*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: post.application
+   * - **API ID Path**: project.application
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   application: prismic.LinkField;
 
   /**
-   * content field in *Post*
+   * content field in *Project*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: post.content
+   * - **API ID Path**: project.content
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   content: prismic.RichTextField;
 
   /**
-   * video field in *Post*
+   * video field in *Project*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: post.video
+   * - **API ID Path**: project.video
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   video: prismic.LinkField;
 
   /**
-   * carousel field in *Post*
+   * carousel field in *Project*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: post.carousel[]
+   * - **API ID Path**: project.carousel[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#group
    */
-  carousel: prismic.GroupField<Simplify<PostDocumentDataCarouselItem>>;
+  carousel: prismic.GroupField<Simplify<ProjectDocumentDataCarouselItem>>;
 }
 
 /**
- * Post document from Prismic
+ * Project document from Prismic
  *
- * - **API ID**: `post`
+ * - **API ID**: `project`
  * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type PostDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<Simplify<PostDocumentData>, "post", Lang>;
+export type ProjectDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ProjectDocumentData>,
+    "project",
+    Lang
+  >;
 
-export type AllDocumentTypes = PostDocument;
+/**
+ * Content for Social Media documents
+ */
+interface SocialMediaDocumentData {
+  /**
+   * linkedin field in *Social Media*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_media.linkedin
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  linkedin: prismic.LinkField;
+
+  /**
+   * github field in *Social Media*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_media.github
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  github: prismic.LinkField;
+
+  /**
+   * whatsapp field in *Social Media*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_media.whatsapp
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  whatsapp: prismic.LinkField;
+
+  /**
+   * Instagram field in *Social Media*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: social_media.instagram
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  instagram: prismic.LinkField;
+}
+
+/**
+ * Social Media document from Prismic
+ *
+ * - **API ID**: `social_media`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SocialMediaDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SocialMediaDocumentData>,
+    "social_media",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | HomeDocument
+  | ProjectDocument
+  | SocialMediaDocument;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -136,9 +316,14 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      PostDocument,
-      PostDocumentData,
-      PostDocumentDataCarouselItem,
+      HomeDocument,
+      HomeDocumentData,
+      HomeDocumentDataSkillsItem,
+      ProjectDocument,
+      ProjectDocumentData,
+      ProjectDocumentDataCarouselItem,
+      SocialMediaDocument,
+      SocialMediaDocumentData,
       AllDocumentTypes,
     };
   }

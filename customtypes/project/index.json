@@ -1,6 +1,6 @@
 {
-  "id": "post",
-  "label": "Post",
+  "id": "project",
+  "label": "Project",
   "format": "custom",
   "repeatable": true,
   "status": true,

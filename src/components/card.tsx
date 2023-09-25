@@ -26,9 +26,8 @@ export function Card({ title, message }: Props) {
         <CountUp
           start={0}
           end={title}
-          prefix="+"
           duration={4}
-          formattingFn={(value) => value.toLocaleString("pt-BR")}
+          formattingFn={(value) => `+${value.toLocaleString("pt-BR")}`}
         />
       </h1>
 
