@@ -16,6 +16,10 @@ export default async function Projects() {
         revalidate: 60 * 30, // 30 minutes
       },
     },
+    orderings: {
+      field: "document.first_publication_date",
+      direction: "desc",
+    },
   });
 
   return (
