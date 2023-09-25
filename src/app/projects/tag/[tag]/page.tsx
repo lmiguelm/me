@@ -55,7 +55,7 @@ export default async function Tag({ params }: Props) {
           title={parsedTag}
           message={
             postQuantity === 0
-              ? "Nenhum projeto encontrado com esta tag"
+              ? "Nenhum projeto encontrado com esta tag."
               : postQuantity === 1
               ? `${postQuantity} projeto encontrado com esta tag.`
               : `${postQuantity} projetos encontrado com esta tag.`
