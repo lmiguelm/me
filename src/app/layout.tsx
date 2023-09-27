@@ -7,7 +7,7 @@ import { inter } from "./fonts";
 
 export const metadata: Metadata = {
   title: {
-    template: "lmiguelm | %s",
+    template: "lmiguelm - %s",
     default: "lmiguelm",
   },
   description: "Portfólio de Luis Miguel",

@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { LinearBackground } from "@/components/linear-background";
 import { Skeleton } from "@/components/ui/skeleton";
+
 import "../../global.css";
 
 export const metadata: Metadata = {
@@ -37,7 +38,11 @@ export default function RootLayout({
         variant="secondary"
         className="min-h-full-with-header-and-footer flex flex-col py-[90px] px-[30%] max-md:px-[30px]"
       >
-        <Suspense fallback={<Skeleton className="w-full h-screen" />}>
+        <Suspense
+          fallback={
+            <Skeleton className="w-full min-h-full-with-header-and-footer" />
+          }
+        >
           {children}
         </Suspense>
       </LinearBackground>

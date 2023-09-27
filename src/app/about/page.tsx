@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
@@ -10,6 +12,11 @@ import { Link } from "@/components/link";
 import { SubHeader } from "@/components/sub-header";
 import { Timeline } from "@/components/timeline";
 import { Title } from "@/components/title";
+
+export const metadata: Metadata = {
+  title: "Sobre",
+  description: "Aqui você pode ver toda minha trajetória em programação.",
+};
 
 export default async function Page() {
   const client = createClient();

@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import React from "react";
 
 import { createClient } from "@/prismicio";
@@ -8,6 +9,7 @@ import { ProjectCardDetail } from "@/components/project-card-detail";
 import { AnimatedSeparator } from "@/components/AnimatedSeparator";
 import { SubHeader } from "@/components/sub-header";
 import { formatUrlParam, parseUrlParam } from "@/utils/url-param";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: {
@@ -23,6 +25,16 @@ export async function generateStaticParams() {
   return tags.map((tag) => ({
     tag: formatUrlParam(tag),
   }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { tag } = params;
+  const parsedTag = parseUrlParam(tag);
+
+  return {
+    title: `lmiguelm - ${parsedTag}`,
+    description: `Projetos que utilizam ${parsedTag}`,
+  };
 }
 
 export default async function Tag({ params }: Props) {
@@ -41,6 +53,10 @@ export default async function Tag({ params }: Props) {
   });
 
   const projectQuantity = projects.results.length;
+
+  if (!projectQuantity) {
+    notFound();
+  }
 
   return (
     <div className="flex flex-col gap-32 max-sm:gap-20 space-y-10">

@@ -20,7 +20,7 @@ export default async function Projects() {
   return (
     <div className="flex flex-col gap-32 max-sm:gap-20 space-y-10">
       <SubHeader
-        title="Portfólio"
+        title="Projetos"
         message=" Aqui você encontra todos os projetos que já desenvolvi em toda minha
           trajetória, desde pessoais, até comerciais."
       />

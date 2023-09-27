@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 import { createClient } from "@/prismicio";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
@@ -6,6 +8,7 @@ import { AnimatedBorderEffect } from "@/components/animated-border-effect";
 import { Link } from "@/components/link";
 import { MotionDiv } from "@/components/motion-div";
 import { formatUrlParam } from "@/utils/url-param";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: {
@@ -13,12 +16,42 @@ type Props = {
   };
 };
 
-export default async function Page({ params }: Props) {
-  const client = createClient();
+const DOCUMENT_TYPE = "project";
 
-  const response = await client.getByUID("project", params.uid, {
-    fetchOptions: { next: { revalidate: 60 * 60 * 24 } }, // 1 day
-  });
+async function getProjectBySlug(slug: string) {
+  try {
+    const client = createClient();
+    const response = await client.getByUID(DOCUMENT_TYPE, slug);
+
+    return response;
+  } catch {
+    notFound();
+  }
+}
+
+export async function generateStaticParams() {
+  const client = createClient();
+  const projects = await client.getAllByType(DOCUMENT_TYPE);
+
+  return projects.map((project) => ({
+    uid: project.uid,
+  }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const response = await getProjectBySlug(params.uid);
+
+  return {
+    title: response.data.title,
+    description: response.data.resume,
+    openGraph: {
+      images: [response.data.thumbnail.url!],
+    },
+  };
+}
+
+export default async function Page({ params }: Props) {
+  const response = await getProjectBySlug(params.uid);
 
   const { tags, data } = response;
 

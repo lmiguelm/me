@@ -8,7 +8,7 @@ export const routesNames = [
     path: "/about",
   },
   {
-    name: "Portfólio",
+    name: "Projetos",
     path: "/projects",
   },
 ];
