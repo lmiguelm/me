@@ -1,7 +1,4 @@
-"use client";
-
-import { useInView } from "framer-motion";
-import { ComponentProps, useRef } from "react";
+import { ComponentProps } from "react";
 import { MotionDiv } from "../motion-div";
 
 type Props = ComponentProps<"ol"> & {
@@ -10,19 +7,11 @@ type Props = ComponentProps<"ol"> & {
 };
 
 export function TimeLineItem({ index = 1, ...props }: Props) {
-  const motionDivRef = useRef<HTMLDivElement>(null);
-
-  const isInView = useInView(motionDivRef);
-
-  const animationFromValue = { x: index % 2 == 0 ? 25 : -25, opacity: 0 };
-  const animationToValue = { x: 0, opacity: 1 };
-
   return (
     <li className="flex flex-col max-w-2xl">
       <MotionDiv
-        ref={motionDivRef}
-        initial={animationFromValue}
-        animate={isInView ? animationToValue : animationFromValue}
+        initial={{ x: index % 2 == 0 ? 25 : -25, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
         transition={{ type: "tween", duration: 0.6 }}
       >
         <div className="flex-start flex items-center pt-3">

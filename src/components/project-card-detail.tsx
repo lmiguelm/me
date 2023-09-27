@@ -27,7 +27,7 @@ export function ProjectCardDetail({ reverse = false, data }: Props) {
     <MotionDiv
       initial={{ x: reverse ? -50 : 50, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      transition={{ type: "spring" }}
+      transition={{ type: "tween" }}
     >
       <div
         data-reverse={reverse}
