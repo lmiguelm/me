@@ -1,10 +1,16 @@
 "use client";
 
 import { motion, MotionProps } from "framer-motion";
+import { forwardRef } from "react";
 
-export function MotionDiv(props: MotionProps) {
+type Props = MotionProps & {
+  className?: string;
+};
+
+export const MotionDiv = forwardRef<HTMLDivElement, Props>((props, ref) => {
   return (
     <motion.div
+      ref={ref}
       initial={{
         opacity: 0.75,
         scale: 0.9,
@@ -25,4 +31,4 @@ export function MotionDiv(props: MotionProps) {
       {props.children}
     </motion.div>
   );
-}
+});

@@ -3,7 +3,6 @@ import React from "react";
 import { createClient } from "@/prismicio";
 import { filter } from "@prismicio/client";
 
-import { FloatActions } from "@/components/float-actions";
 import { ProjectCardDetail } from "@/components/project-card-detail";
 
 import { AnimatedSeparator } from "@/components/AnimatedSeparator";
@@ -44,38 +43,34 @@ export default async function Tag({ params }: Props) {
   const projectQuantity = projects.results.length;
 
   return (
-    <>
-      <FloatActions />
+    <div className="flex flex-col gap-32 max-sm:gap-20 space-y-10">
+      <SubHeader
+        title={parsedTag}
+        message={
+          projectQuantity === 0
+            ? "Nenhum projeto encontrado com esta tag."
+            : projectQuantity === 1
+            ? `${projectQuantity} projeto encontrado com esta tag.`
+            : `${projectQuantity} projetos encontrado com esta tag.`
+        }
+      />
 
-      <div className="flex flex-col gap-32 max-sm:gap-20 space-y-10">
-        <SubHeader
-          title={parsedTag}
-          message={
-            projectQuantity === 0
-              ? "Nenhum projeto encontrado com esta tag."
-              : projectQuantity === 1
-              ? `${projectQuantity} projeto encontrado com esta tag.`
-              : `${projectQuantity} projetos encontrado com esta tag.`
-          }
-        />
+      {projects.results.map((project, index) => (
+        <React.Fragment key={project.id}>
+          <ProjectCardDetail
+            reverse={index % 2 === 0}
+            data={{
+              title: project.data.title,
+              resume: project.data.resume,
+              thumbnail: project.data.thumbnail,
+              url: project.url!,
+              tags: project.tags,
+            }}
+          />
 
-        {projects.results.map((project, index) => (
-          <React.Fragment key={project.id}>
-            <ProjectCardDetail
-              reverse={index % 2 === 0}
-              data={{
-                title: project.data.title,
-                resume: project.data.resume,
-                thumbnail: project.data.thumbnail,
-                url: project.url!,
-                tags: project.tags,
-              }}
-            />
-
-            <AnimatedSeparator />
-          </React.Fragment>
-        ))}
-      </div>
-    </>
+          <AnimatedSeparator />
+        </React.Fragment>
+      ))}
+    </div>
   );
 }

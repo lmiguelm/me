@@ -1,0 +1,81 @@
+{
+  "id": "about",
+  "label": "About",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "curriculum": {
+        "type": "Link",
+        "config": {
+          "label": "curriculum",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "timeline": {
+        "type": "Group",
+        "config": {
+          "label": "timeline",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "title",
+                "placeholder": ""
+              }
+            },
+            "start_date": {
+              "type": "Date",
+              "config": {
+                "label": "start_date",
+                "placeholder": ""
+              }
+            },
+            "end_date": {
+              "type": "Date",
+              "config": {
+                "label": "end_date",
+                "placeholder": ""
+              }
+            },
+            "content": {
+              "type": "StructuredText",
+              "config": {
+                "label": "content",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+              }
+            },
+            "credential": {
+              "type": "Link",
+              "config": {
+                "label": "credential",
+                "placeholder": "",
+                "select": null
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

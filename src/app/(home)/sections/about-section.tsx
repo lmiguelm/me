@@ -20,11 +20,7 @@ export async function AboutSection() {
       <div className="flex justify-between items-center">
         <Subtitle>Sobre</Subtitle>
 
-        <Link
-          target="_blank"
-          href="/docs/curriculo.pdf"
-          title="Ver currículo"
-        />
+        <Link href="/about" title="Ver mais" />
       </div>
 
       <main className="prose prose-system prose-sm text-justify">

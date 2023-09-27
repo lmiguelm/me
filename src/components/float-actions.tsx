@@ -6,10 +6,13 @@ import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 
 import { useState } from "react";
-import { Link } from "./link";
 import { Button } from "./ui/button";
 
-export function FloatActions() {
+type Props = {
+  children: React.ReactNode;
+};
+
+export function FloatActions({ children }: Props) {
   const { scrollYProgress } = useScroll();
   const router = useRouter();
 
@@ -71,11 +74,13 @@ export function FloatActions() {
         </svg>
       </Button>
 
-      <Link href="/projects/tag/mobile" title="Mobile" />
+      {children}
+
+      {/* <Link href="/projects/tag/mobile" title="Mobile" />
 
       <Link href="/projects/tag/front-end" title="Front-end" />
 
-      <Link href="/projects/tag/back-end" title="Back-end" />
+      <Link href="/projects/tag/back-end" title="Back-end" /> */}
     </div>
   );
 }

@@ -2,7 +2,6 @@ import { Suspense } from "react";
 
 import type { Metadata } from "next";
 
-import { FloatAction } from "@/components/float-action";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { LinearBackground } from "@/components/linear-background";
@@ -21,14 +20,6 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <FloatAction.Root>
-        <FloatAction.Arrow />
-        <FloatAction.Progress />
-        <FloatAction.Link title="Back-end" href="/projects/tag/back-end" />
-        <FloatAction.Link title="Front-end" href="/projects/tag/front-end" />
-        <FloatAction.Link title="Mobile" href="/projects/tag/mobile" />
-      </FloatAction.Root>
-
       <Suspense fallback={<Skeleton className="w-full h-14" />}>
         <Header />
       </Suspense>

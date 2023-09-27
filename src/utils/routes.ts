@@ -4,6 +4,10 @@ export const routesNames = [
     path: "/",
   },
   {
+    name: "Sobre",
+    path: "/about",
+  },
+  {
     name: "Portfólio",
     path: "/projects",
   },

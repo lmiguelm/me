@@ -1,6 +1,5 @@
 import React from "react";
 
-import { FloatActions } from "@/components/float-actions";
 import { ProjectCardDetail } from "@/components/project-card-detail";
 
 import { AnimatedSeparator } from "@/components/AnimatedSeparator";
@@ -19,33 +18,29 @@ export default async function Projects() {
   });
 
   return (
-    <>
-      <FloatActions />
-
-      <div className="flex flex-col gap-32 max-sm:gap-20 space-y-10">
-        <SubHeader
-          title="Portfólio"
-          message=" Aqui você encontra todos os projetos que já desenvolvi em toda minha
+    <div className="flex flex-col gap-32 max-sm:gap-20 space-y-10">
+      <SubHeader
+        title="Portfólio"
+        message=" Aqui você encontra todos os projetos que já desenvolvi em toda minha
           trajetória, desde pessoais, até comerciais."
-        />
+      />
 
-        {projects.map((project, index) => (
-          <React.Fragment key={project.id}>
-            <ProjectCardDetail
-              reverse={index % 2 === 0}
-              data={{
-                title: project.data.title,
-                resume: project.data.resume,
-                thumbnail: project.data.thumbnail,
-                url: project.url!,
-                tags: project.tags,
-              }}
-            />
+      {projects.map((project, index) => (
+        <React.Fragment key={project.id}>
+          <ProjectCardDetail
+            reverse={index % 2 === 0}
+            data={{
+              title: project.data.title,
+              resume: project.data.resume,
+              thumbnail: project.data.thumbnail,
+              url: project.url!,
+              tags: project.tags,
+            }}
+          />
 
-            <AnimatedSeparator />
-          </React.Fragment>
-        ))}
-      </div>
-    </>
+          <AnimatedSeparator />
+        </React.Fragment>
+      ))}
+    </div>
   );
 }
