@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 
 import { createClient } from "@/prismicio";
-import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 
 import { AnimatedBorderEffect } from "@/components/animated-border-effect";
@@ -90,17 +89,25 @@ export default async function Page({ params }: Props) {
               <div className="flex justify-center items-center text-sm gap-3 text-muted-foreground">
                 {!!(application as any).url && (
                   <>
-                    <PrismicNextLink className="underline" field={application}>
-                      Acessar
-                    </PrismicNextLink>
+                    <Link
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Acessar"
+                      href={(application as any).url}
+                    />
 
                     <span>•</span>
                   </>
                 )}
 
-                <PrismicNextLink className="underline" field={repository}>
-                  GitHub
-                </PrismicNextLink>
+                {!!(repository as any).url && (
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Github"
+                    href={(repository as any).url}
+                  />
+                )}
               </div>
             </header>
 
