@@ -112,13 +112,13 @@ export default async function Page({ params }: Props) {
                 <div className="flex flex-col space-y-3">
                   <p>📸 Imagens</p>
 
-                  <div className="flex gap-3 overflow-x-auto pb-3">
+                  <div className="flex gap-3 overflow-x-auto">
                     {carousel.map(({ image }) => (
                       <PrismicNextImage
                         key={image.url}
                         field={image}
-                        height={300}
-                        width={300}
+                        height={500}
+                        width={500}
                         className="rounded aspect-square"
                       />
                     ))}
@@ -130,7 +130,11 @@ export default async function Page({ params }: Props) {
                 <div className="flex flex-col space-y-3">
                   <p>📽️ Vídeo de demonstração</p>
 
-                  <video src={(video as any).url} controls />
+                  <video
+                    className="aspect-square"
+                    src={(video as any).url}
+                    controls
+                  />
                 </div>
               )}
 
