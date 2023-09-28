@@ -8,7 +8,7 @@ export async function Image(props: PrismicNextImageProps) {
     }
 
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, { cache: "no-store" });
 
       const buffer = Buffer.from(await response.arrayBuffer());
       const { base64 } = await getPlaiceholder(buffer);
