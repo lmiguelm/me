@@ -9,6 +9,7 @@ import { Separator } from "./ui/separator";
 
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -35,7 +36,9 @@ export function Menu() {
             <Fragment key={path}>
               <Link href={path}>
                 <div className="w-full py-3 mt-3">
-                  <span className="text-sm">{name}</span>
+                  <SheetClose>
+                    <span className="text-sm">{name}</span>
+                  </SheetClose>
                 </div>
               </Link>
 
