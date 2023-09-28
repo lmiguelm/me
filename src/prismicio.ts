@@ -1,4 +1,5 @@
 import * as prismic from "@prismicio/client";
+import { RequestInitLike } from "@prismicio/client";
 import * as prismicNext from "@prismicio/next";
 import config from "../slicemachine.config.json";
 
@@ -35,14 +36,16 @@ const routes: prismic.ClientConfig["routes"] = [
  * @param config - Configuration for the Prismic client.
  */
 
+export const prismicFetchOptions: RequestInitLike =
+  process.env.NODE_ENV === "production"
+    ? { next: { tags: ["prismic"] }, cache: "force-cache" }
+    : { next: { revalidate: 5 } };
+
 export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
   const client = prismic.createClient(repositoryName, {
     routes,
     accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-    fetchOptions:
-      process.env.NODE_ENV === "production"
-        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
-        : { next: { revalidate: 5 } },
+    fetchOptions: prismicFetchOptions,
     ...config,
   });
 
