@@ -1,6 +1,6 @@
+import { Image } from "@/components/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { createClient } from "@/prismicio";
-import { PrismicNextImage } from "@prismicio/next";
 
 export async function AvatarSection() {
   const client = createClient();
@@ -12,7 +12,7 @@ export async function AvatarSection() {
   return (
     <div className="flex-1 overflow-hidden rounded flex items-center justify-center">
       <AspectRatio ratio={4 / 4}>
-        <PrismicNextImage
+        <Image
           field={data.avatar}
           width={500}
           height={500}

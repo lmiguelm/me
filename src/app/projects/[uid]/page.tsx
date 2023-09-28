@@ -1,10 +1,11 @@
 import { Metadata } from "next";
 
 import { createClient } from "@/prismicio";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 
 import { AnimatedBorderEffect } from "@/components/animated-border-effect";
+import { Image } from "@/components/image";
 import { Link } from "@/components/link";
 import { MotionDiv } from "@/components/motion-div";
 import { formatUrlParam } from "@/utils/url-param";
@@ -74,7 +75,7 @@ export default async function Page({ params }: Props) {
     >
       <AnimatedBorderEffect>
         <div className="bg-background rounded">
-          <PrismicNextImage field={thumbnail} className="rounded-t" />
+          <Image field={thumbnail} className="rounded-t" />
 
           <div className="flex flex-col items-center p-[5%] space-y-20">
             <header className="flex flex-col items-center justify-center space-y-3">
@@ -114,7 +115,7 @@ export default async function Page({ params }: Props) {
 
                   <div className="flex gap-3 overflow-x-auto">
                     {carousel.map(({ image }) => (
-                      <PrismicNextImage
+                      <Image
                         key={image.url}
                         field={image}
                         height={500}

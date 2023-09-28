@@ -17,12 +17,7 @@ export async function StacksSection() {
 
       <div className="grid grid-cols-8 max-sm:grid-cols-4 items-center gap-3">
         {data.skills.map(({ skill, url: link }) => (
-          <StackCard
-            key={skill.alt}
-            alt={skill.alt!}
-            src={skill.url!}
-            url={(link as any).url}
-          />
+          <StackCard key={skill.url} field={skill} url={(link as any).url} />
         ))}
       </div>
     </LinearBackground>

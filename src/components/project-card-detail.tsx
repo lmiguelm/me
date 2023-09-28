@@ -1,10 +1,10 @@
 import { ImageField, KeyTextField } from "@prismicio/client";
-import { PrismicNextImage } from "@prismicio/next";
 import NextLink from "next/link";
 
 // import { formatUrlParam } from "@/utils/url-param";
 import { formatUrlParam } from "@/utils/url-param";
 import { AnimatedBorderEffect } from "./animated-border-effect";
+import { Image } from "./image";
 import { Link } from "./link";
 import { MotionDiv } from "./motion-div";
 import { Subtitle } from "./subtitle";
@@ -68,7 +68,7 @@ export function ProjectCardDetail({ reverse = false, data }: Props) {
         >
           <AnimatedBorderEffect>
             <div className="overflow-hidden">
-              <PrismicNextImage
+              <Image
                 field={data.thumbnail}
                 height={500}
                 width={500}

@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { PrismicNextImage } from "@prismicio/next";
 import { ProjectDocumentData, Simplify } from "../../prismicio-types";
 
+import { Image } from "./image";
 import { Tooltip } from "./tooltip";
 
 type Props = {
@@ -14,7 +14,7 @@ export function ProjectCard({ data, href }: Props) {
   return (
     <Tooltip message={data.title!}>
       <Link href={href}>
-        <PrismicNextImage
+        <Image
           field={data.thumbnail}
           height={500}
           width={500}

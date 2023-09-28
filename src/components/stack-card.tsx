@@ -1,17 +1,19 @@
-import Image, { ImageProps } from "next/image";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
+import { PrismicNextImageProps } from "@prismicio/next";
+
+import { Image } from "@/components/image";
 import { Tooltip } from "@/components/tooltip";
 import { AspectRatio } from "./ui/aspect-ratio";
 
-type Props = ImageProps & {
+type Props = PrismicNextImageProps & {
   url: string;
 };
 
 export function StackCard({ url, ...props }: Props) {
   return (
-    <Tooltip message={props.alt}>
+    <Tooltip message={props.field?.alt ?? ""}>
       <Link rel="noopener noreferrer" target="_blank" href={url}>
         <div
           className={twMerge(
