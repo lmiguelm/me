@@ -111,7 +111,7 @@ export default async function Page({ params }: Props) {
             <footer className="flex flex-col gap-20">
               {!!carousel.length && (
                 <div className="flex flex-col space-y-3">
-                  <p>📸 Imagens</p>
+                  <p>📸 Slides</p>
 
                   <div className="flex gap-3 overflow-x-auto">
                     {carousel.map(({ image }) => (
@@ -129,7 +129,7 @@ export default async function Page({ params }: Props) {
 
               {(video as any).url && (
                 <div className="flex flex-col space-y-3">
-                  <p>📽️ Vídeo de demonstração</p>
+                  <p>📽️ Vídeo demonstrativo</p>
 
                   <video
                     className="aspect-square"

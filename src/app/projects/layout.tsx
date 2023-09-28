@@ -25,8 +25,8 @@ export default function RootLayout({
       <FloatAction.Root>
         <FloatAction.Arrow />
         <FloatAction.Progress />
-        <FloatAction.Link title="Back-end" href="/projects/tag/back-end" />
-        <FloatAction.Link title="Front-end" href="/projects/tag/front-end" />
+        <FloatAction.Link title="Back End" href="/projects/tag/back-end" />
+        <FloatAction.Link title="Front End" href="/projects/tag/front-end" />
         <FloatAction.Link title="Mobile" href="/projects/tag/mobile" />
       </FloatAction.Root>
 
