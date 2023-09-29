@@ -1,10 +1,13 @@
 import { LinearBackground } from "./linear-background";
+import { Link } from "./link";
 import { MotionDiv } from "./motion-div";
 import { Title } from "./title";
+import { Separator } from "./ui/separator";
 
 type Props = {
   title?: string;
   message?: string;
+  links?: { url: string; title: string }[];
 };
 
 export function SubHeader(props: Props) {
@@ -22,6 +25,25 @@ export function SubHeader(props: Props) {
         <Title>{props.title}</Title>
 
         <p className="leading-relaxed text-sm text-center">{props.message}</p>
+
+        <div>
+          {!!props.links &&
+            props.links.map((link, index) => (
+              <div className="flex items-center gap-3">
+                <Link
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={link.url}
+                  key={link.url}
+                  title={link.title}
+                />
+
+                {index !== props.links?.length! - 1 && (
+                  <Separator orientation="vertical" className="h-3" />
+                )}
+              </div>
+            ))}
+        </div>
       </LinearBackground>
     </MotionDiv>
   );

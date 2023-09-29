@@ -4,7 +4,6 @@ import { createClient } from "@/prismicio";
 import { asText } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 
-import { FloatAction } from "@/components/float-action";
 import { Link } from "@/components/link";
 import { SubHeader } from "@/components/sub-header";
 import { Timeline } from "@/components/timeline";
@@ -23,46 +22,35 @@ export default async function Page() {
   const { title, description, timeline, curriculum } = data;
 
   return (
-    <>
-      <FloatAction.Root>
-        <FloatAction.Arrow />
+    <div className="flex flex-col items-center min-h-screen space-y-20">
+      <SubHeader
+        title={title!}
+        message={asText(description)}
+        links={[{ title: "Ver currículo", url: (curriculum as any).url }]}
+      />
 
-        <FloatAction.Progress />
+      <Timeline.Root>
+        {timeline.map(
+          ({ content, credential, end_date, start_date, title }, index) => (
+            <Timeline.Item
+              index={index + 1}
+              key={`${title}${start_date}${end_date}`}
+              startDate={start_date && new Date(start_date)}
+              endDate={end_date && new Date(end_date)}
+            >
+              <Title className="text-xl font-semibold">{title}</Title>
 
-        <FloatAction.Link
-          href={(curriculum as any).url}
-          target="_blank"
-          title="Ver Currículo"
-          rel="noopener noreferrer"
-        />
-      </FloatAction.Root>
+              <div className="prose prose-system">
+                <PrismicRichText field={content} />
+              </div>
 
-      <div className="flex flex-col items-center min-h-screen space-y-20">
-        <SubHeader title={title!} message={asText(description)} />
-
-        <Timeline.Root>
-          {timeline.map(
-            ({ content, credential, end_date, start_date, title }, index) => (
-              <Timeline.Item
-                index={index + 1}
-                key={`${title}${start_date}${end_date}`}
-                startDate={start_date && new Date(start_date)}
-                endDate={end_date && new Date(end_date)}
-              >
-                <Title className="text-xl font-semibold">{title}</Title>
-
-                <div className="prose prose-system">
-                  <PrismicRichText field={content} />
-                </div>
-
-                {!!(credential as any).url && (
-                  <Link href={(credential as any).url} title="Ver credencial" />
-                )}
-              </Timeline.Item>
-            )
-          )}
-        </Timeline.Root>
-      </div>
-    </>
+              {!!(credential as any).url && (
+                <Link href={(credential as any).url} title="Ver credencial" />
+              )}
+            </Timeline.Item>
+          )
+        )}
+      </Timeline.Root>
+    </div>
   );
 }

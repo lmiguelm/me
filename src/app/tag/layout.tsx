@@ -23,9 +23,7 @@ export default function RootLayout({
       <FloatAction.Root>
         <FloatAction.Arrow />
         <FloatAction.Progress />
-        <FloatAction.Link title="Back End" href="/tag/back-end" />
-        <FloatAction.Link title="Front End" href="/tag/front-end" />
-        <FloatAction.Link title="Mobile" href="/tag/mobile" />
+        <FloatAction.Share />
       </FloatAction.Root>
 
       <Suspense fallback={<Skeleton className="w-full h-14" />}>

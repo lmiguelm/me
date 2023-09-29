@@ -8,9 +8,8 @@ export function FloatActionProgress() {
 
   return (
     <Button
-      variant="outline"
+      variant="secondary"
       className="flex items-center justify-center p-2 w-9 h-9"
-      disabled
     >
       <svg className="w-4 h-8" viewBox="0 0 100 100">
         <circle
@@ -18,7 +17,7 @@ export function FloatActionProgress() {
           cy="50"
           r="30"
           pathLength="1"
-          className="stroke-primary/50"
+          className="stroke-background"
           fill="none"
           strokeWidth={15}
         />
@@ -28,7 +27,7 @@ export function FloatActionProgress() {
           cy="50"
           r="30"
           pathLength="1"
-          className="stroke-primary"
+          className="stroke-muted-foreground"
           style={{ pathLength: scrollYProgress }}
           fill="none"
           strokeWidth={15}

@@ -2,6 +2,7 @@ import { Suspense } from "react";
 
 import type { Metadata } from "next";
 
+import { FloatAction } from "@/components/float-action";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { LinearBackground } from "@/components/linear-background";
@@ -32,6 +33,12 @@ export default function RootLayout({
           {children}
         </Suspense>
       </LinearBackground>
+
+      <FloatAction.Root>
+        <FloatAction.Arrow />
+        <FloatAction.Progress />
+        <FloatAction.Share />
+      </FloatAction.Root>
 
       <Suspense fallback={<Skeleton className="w-full h-80" />}>
         <Footer />
