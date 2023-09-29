@@ -49,7 +49,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       title: response.data.title!,
       description: response.data.resume!,
-      images: [response.data.thumbnail.url!],
+      images: [
+        {
+          url: response.data.thumbnail.url!,
+          width: 1200,
+          height: 630,
+          alt: response.data.title!,
+        },
+      ],
       siteName: "lmiguelm",
     },
   };
