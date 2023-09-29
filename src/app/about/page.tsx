@@ -1,10 +1,7 @@
 import { Metadata } from "next";
 
-import { format } from "date-fns";
-import { ptBR } from "date-fns/locale";
-
 import { createClient } from "@/prismicio";
-import { DateField, asText } from "@prismicio/client";
+import { asText } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 
 import { FloatAction } from "@/components/float-action";
@@ -24,33 +21,6 @@ export default async function Page() {
   const { data } = await client.getSingle("about");
 
   const { title, description, timeline, curriculum } = data;
-
-  function formatDate(startDate?: DateField, endDate?: DateField) {
-    const start = startDate && new Date(startDate);
-    const end = endDate && new Date(endDate);
-
-    if (!end && start) {
-      return format(start as Date, "'Desde' LLLL 'de' yyyy", {
-        locale: ptBR,
-      });
-    }
-
-    if (!start && end) {
-      return format(end as Date, "LLLL 'de' yyyy", {
-        locale: ptBR,
-      });
-    }
-
-    if (start && end) {
-      return `${format(start as Date, "dd LLL 'de' yyyy", {
-        locale: ptBR,
-      })} - ${format(end as Date, "dd LLL 'de' yyyy", {
-        locale: ptBR,
-      })}`;
-    }
-
-    return "";
-  }
 
   return (
     <>
@@ -76,7 +46,8 @@ export default async function Page() {
               <Timeline.Item
                 index={index + 1}
                 key={`${title}${start_date}${end_date}`}
-                date={formatDate(start_date, end_date)}
+                startDate={start_date && new Date(start_date)}
+                endDate={end_date && new Date(end_date)}
               >
                 <Title className="text-xl font-semibold">{title}</Title>
 
