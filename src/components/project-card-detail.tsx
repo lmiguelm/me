@@ -76,7 +76,7 @@ export function ProjectCardDetail({ reverse = false, data }: Props) {
 
                 <Link
                   key={tag}
-                  href={`/projects/tag/${formatUrlParam(tag)}`}
+                  href={`/tag/${formatUrlParam(tag)}`}
                   title={tag}
                 />
               </>
