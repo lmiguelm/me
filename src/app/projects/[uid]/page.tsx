@@ -7,6 +7,7 @@ import { AnimatedBorderEffect } from "@/components/animated-border-effect";
 import { Image } from "@/components/image";
 import { Link } from "@/components/link";
 import { MotionDiv } from "@/components/motion-div";
+import { Separator } from "@/components/ui/separator";
 import { formatUrlParam } from "@/utils/url-param";
 import { notFound } from "next/navigation";
 
@@ -96,7 +97,7 @@ export default async function Page({ params }: Props) {
                       href={(application as any).url}
                     />
 
-                    <span>•</span>
+                    <Separator className="h-3" orientation="vertical" />
                   </>
                 )}
 

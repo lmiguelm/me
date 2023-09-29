@@ -6,6 +6,7 @@ import { AnimatedSeparator } from "@/components/AnimatedSeparator";
 import { PaginationComponent } from "@/components/pagination/pagination";
 import { SubHeader } from "@/components/sub-header";
 import { createClient } from "@/prismicio";
+import { asText } from "@prismicio/client";
 
 type Props = {
   currentPage?: number;
@@ -19,7 +20,12 @@ export async function Projects({ currentPage = 1 }: Props) {
       field: "document.first_publication_date",
       direction: "desc",
     },
-    fetch: ["project.title", "project.resume", "project.thumbnail"],
+    fetch: [
+      "project.title",
+      "project.resume",
+      "project.thumbnail",
+      "project.content",
+    ],
     pageSize: 5,
     page: currentPage,
   });
@@ -43,6 +49,7 @@ export async function Projects({ currentPage = 1 }: Props) {
               url: project.url!,
               tags: project.tags,
               publication_date: new Date(project.first_publication_date),
+              content: asText(project.data.content),
             }}
           />
 

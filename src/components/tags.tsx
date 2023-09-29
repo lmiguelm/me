@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 
 import { createClient } from "@/prismicio";
-import { filter } from "@prismicio/client";
+import { asText, filter } from "@prismicio/client";
 
 import { parseUrlParam } from "@/utils/url-param";
 import { AnimatedSeparator } from "./AnimatedSeparator";
@@ -25,7 +25,12 @@ export async function Tags({ tag, currentPage = 1 }: Props) {
       field: "document.first_publication_date",
       direction: "desc",
     },
-    fetch: ["project.title", "project.resume", "project.thumbnail"],
+    fetch: [
+      "project.title",
+      "project.resume",
+      "project.thumbnail",
+      "project.content",
+    ],
     pageSize: 5,
     page: currentPage,
   });
@@ -59,6 +64,8 @@ export async function Tags({ tag, currentPage = 1 }: Props) {
               thumbnail: project.data.thumbnail,
               url: project.url!,
               tags: project.tags,
+              content: asText(project.data.content),
+              publication_date: new Date(project.first_publication_date),
             }}
           />
 

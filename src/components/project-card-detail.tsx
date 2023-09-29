@@ -3,12 +3,14 @@ import NextLink from "next/link";
 
 // import { formatUrlParam } from "@/utils/url-param";
 import { formatDateToNow } from "@/utils/format-date-to-now";
+import { getReadingTime } from "@/utils/get-reading-time";
 import { formatUrlParam } from "@/utils/url-param";
 import { AnimatedBorderEffect } from "./animated-border-effect";
 import { Image } from "./image";
 import { Link } from "./link";
 import { MotionDiv } from "./motion-div";
-import { Subtitle } from "./subtitle";
+import { Title } from "./title";
+import { Separator } from "./ui/separator";
 
 type Data = {
   url: string;
@@ -17,6 +19,7 @@ type Data = {
   thumbnail: ImageField;
   tags: string[];
   publication_date: Date;
+  content: string;
 };
 
 type Props = {
@@ -44,11 +47,18 @@ export function ProjectCardDetail({ reverse = false, data }: Props) {
             data-reverse={reverse}
             className="flex w-full flex-col data-[reverse=true]:items-end hover:text-muted-foreground transition-all space-y-2"
           >
-            <div className="text-sm text-muted-foreground">
+            <div
+              data-reverse={reverse}
+              className="text-sm text-muted-foreground flex data-[reverse=true]:flex-row-reverse gap-3 items-center"
+            >
               <span>{formatDateToNow(data.publication_date)}</span>
+
+              <Separator orientation="vertical" className="h-3" />
+
+              <span>{getReadingTime(data.content)}</span>
             </div>
 
-            <Subtitle>{data.title}</Subtitle>
+            <Title>{data.title}</Title>
 
             <div className="bg-highlight/50 backdrop-blur-md p-3 rounded border w-full">
               <p className="leading-relaxed text-sm text-justify">
@@ -57,13 +67,19 @@ export function ProjectCardDetail({ reverse = false, data }: Props) {
             </div>
           </NextLink>
 
-          <div className="flex gap-3">
-            {data.tags.map((tag) => (
-              <Link
-                key={tag}
-                href={`/projects/tag/${formatUrlParam(tag)}`}
-                title={tag}
-              />
+          <div className="flex items-center gap-3">
+            {data.tags.map((tag, index) => (
+              <>
+                {index !== 0 && (
+                  <Separator orientation="vertical" className="h-3" />
+                )}
+
+                <Link
+                  key={tag}
+                  href={`/projects/tag/${formatUrlParam(tag)}`}
+                  title={tag}
+                />
+              </>
             ))}
           </div>
         </div>
