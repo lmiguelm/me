@@ -74,7 +74,7 @@ export default async function Page({ params }: Props) {
     >
       <AnimatedBorderEffect>
         <div className="bg-background rounded">
-          <Image field={thumbnail} className="rounded-t" />
+          <Image alt="" field={thumbnail} className="rounded-t" />
 
           <div className="flex flex-col items-center p-[5%] space-y-20">
             <header className="flex flex-col items-center justify-center space-y-3">
@@ -123,6 +123,7 @@ export default async function Page({ params }: Props) {
                   <div className="flex gap-3 overflow-x-auto">
                     {carousel.map(({ image }) => (
                       <Image
+                        alt=""
                         key={image.url}
                         field={image}
                         height={500}

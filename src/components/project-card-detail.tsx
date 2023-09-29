@@ -69,6 +69,7 @@ export function ProjectCardDetail({ reverse = false, data }: Props) {
           <AnimatedBorderEffect>
             <div className="overflow-hidden">
               <Image
+                alt=""
                 field={data.thumbnail}
                 height={500}
                 width={500}

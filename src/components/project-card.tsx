@@ -15,6 +15,7 @@ export function ProjectCard({ data, href }: Props) {
     <Tooltip message={data.title!}>
       <Link href={href}>
         <Image
+          alt=""
           field={data.thumbnail}
           height={500}
           width={500}

@@ -29,6 +29,7 @@ export function StackCard({ url, ...props }: Props) {
               height={60}
               width={60}
               className="max-w-none max-lg:w-[30px] hover:scale-110 transition-transform"
+              alt=""
               {...props}
             />
           </AspectRatio>

@@ -16,7 +16,7 @@ export async function Footer() {
             url={url}
             icon={socialMediaIcon[key as keyof typeof socialMediaIcon]}
             variant="outline"
-            iconClassName="w-6 h-6"
+            iconclassname="w-6 h-6"
           />
         ))}
       </div>

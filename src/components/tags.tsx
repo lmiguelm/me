@@ -1,58 +1,36 @@
-import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import React from "react";
 
 import { createClient } from "@/prismicio";
 import { filter } from "@prismicio/client";
 
-import { ProjectCardDetail } from "@/components/project-card-detail";
-
-import { AnimatedSeparator } from "@/components/AnimatedSeparator";
-import { SubHeader } from "@/components/sub-header";
-import { formatUrlParam, parseUrlParam } from "@/utils/url-param";
-import { notFound } from "next/navigation";
+import { parseUrlParam } from "@/utils/url-param";
+import { AnimatedSeparator } from "./AnimatedSeparator";
+import { PaginationComponent } from "./pagination/pagination";
+import { ProjectCardDetail } from "./project-card-detail";
+import { SubHeader } from "./sub-header";
 
 type Props = {
-  params: {
-    tag: string;
-  };
+  tag: string;
+  currentPage?: number;
 };
 
-export async function generateStaticParams() {
+export async function Tags({ tag, currentPage = 1 }: Props) {
   const client = createClient();
-
-  const tags = await client.getTags();
-
-  return tags.map((tag) => ({
-    tag: formatUrlParam(tag),
-  }));
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { tag } = params;
   const parsedTag = parseUrlParam(tag);
 
-  return {
-    title: `lmiguelm - ${parsedTag}`,
-    description: `Projetos que utilizam ${parsedTag}`,
-  };
-}
-
-export default async function Tag({ params }: Props) {
-  const { tag } = params;
-  const parsedTag = parseUrlParam(tag);
-
-  const client = createClient();
-
-  const projects = await client.getByType("project", {
+  const response = await client.getByType("project", {
     filters: [filter.at("document.tags", [parsedTag])],
     orderings: {
       field: "document.first_publication_date",
       direction: "desc",
     },
     fetch: ["project.title", "project.resume", "project.thumbnail"],
+    pageSize: 5,
+    page: currentPage,
   });
 
-  const projectQuantity = projects.results.length;
+  const projectQuantity = response.total_results_size;
 
   if (!projectQuantity) {
     notFound();
@@ -71,7 +49,7 @@ export default async function Tag({ params }: Props) {
         }
       />
 
-      {projects.results.map((project, index) => (
+      {response.results.map((project, index) => (
         <React.Fragment key={project.id}>
           <ProjectCardDetail
             reverse={index % 2 === 0}
@@ -87,6 +65,12 @@ export default async function Tag({ params }: Props) {
           <AnimatedSeparator />
         </React.Fragment>
       ))}
+
+      <PaginationComponent
+        currentPage={response.page}
+        totalPages={response.total_pages}
+        defaultPath={`/tag/${tag}`}
+      />
     </div>
   );
 }

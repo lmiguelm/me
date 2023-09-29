@@ -13,6 +13,7 @@ export async function AvatarSection() {
     <div className="flex-1 overflow-hidden rounded flex items-center justify-center">
       <AspectRatio ratio={4 / 4}>
         <Image
+          alt=""
           field={data.avatar}
           width={500}
           height={500}

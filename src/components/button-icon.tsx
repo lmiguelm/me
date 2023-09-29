@@ -5,7 +5,7 @@ import { Button, ButtonProps } from "./ui/button";
 
 type Props = ButtonProps & {
   icon: ElementType;
-  iconClassName?: string;
+  iconclassname?: string;
 };
 
 export function ButtonIcon({ icon: Icon, ...props }: Props) {
@@ -15,7 +15,7 @@ export function ButtonIcon({ icon: Icon, ...props }: Props) {
       className="flex items-center justify-center p-2"
       {...props}
     >
-      <Icon className={twMerge("h-4 w-4", props.iconClassName)} />
+      <Icon className={twMerge("h-4 w-4", props.iconclassname)} />
     </Button>
   );
 }

@@ -10,7 +10,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export const metadata: Metadata = {
   title: "Projetos",
-  description: "Projetos desenvolvidos por Luis Miguel",
+  description: "Projetos desenvolvidos por Luis Miguel por tag",
 };
 
 export default function RootLayout({
