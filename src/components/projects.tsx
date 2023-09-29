@@ -42,6 +42,7 @@ export async function Projects({ currentPage = 1 }: Props) {
               thumbnail: project.data.thumbnail,
               url: project.url!,
               tags: project.tags,
+              publication_date: new Date(project.first_publication_date),
             }}
           />
 

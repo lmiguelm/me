@@ -2,6 +2,7 @@ import { ImageField, KeyTextField } from "@prismicio/client";
 import NextLink from "next/link";
 
 // import { formatUrlParam } from "@/utils/url-param";
+import { formatDateToNow } from "@/utils/format-date-to-now";
 import { formatUrlParam } from "@/utils/url-param";
 import { AnimatedBorderEffect } from "./animated-border-effect";
 import { Image } from "./image";
@@ -15,6 +16,7 @@ type Data = {
   resume: KeyTextField;
   thumbnail: ImageField;
   tags: string[];
+  publication_date: Date;
 };
 
 type Props = {
@@ -42,6 +44,10 @@ export function ProjectCardDetail({ reverse = false, data }: Props) {
             data-reverse={reverse}
             className="flex w-full flex-col data-[reverse=true]:items-end hover:text-muted-foreground transition-all space-y-2"
           >
+            <div className="text-sm text-muted-foreground">
+              <span>{formatDateToNow(data.publication_date)}</span>
+            </div>
+
             <Subtitle>{data.title}</Subtitle>
 
             <div className="bg-highlight/50 backdrop-blur-md p-3 rounded border w-full">
