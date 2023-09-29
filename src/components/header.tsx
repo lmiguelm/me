@@ -4,8 +4,10 @@ import { Menu as MenuComponent } from "@/components/menu";
 
 import { createClient } from "@/prismicio";
 import { socialMediaIcon } from "@/utils/social-media-icon";
+import Link from "next/link";
 import { MediaSocialIconLink } from "./media-social-icon-link";
 import { NavigationLinks } from "./navigation-links";
+import { Title } from "./title";
 import { ToggleThemeButton } from "./toggle-theme-button";
 
 export async function Header() {
@@ -19,7 +21,9 @@ export async function Header() {
           <Code2 className="max-sm:hidden" />
           <MenuComponent />
 
-          <span className="text-2xl">lmiguelm_</span>
+          <Link href="/">
+            <Title className="text-2xl">lmiguelm_</Title>
+          </Link>
         </div>
 
         <NavigationLinks />
