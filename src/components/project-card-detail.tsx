@@ -30,7 +30,7 @@ type Props = {
 export function ProjectCardDetail({ reverse = false, data }: Props) {
   return (
     <MotionDiv
-      initial={{ x: reverse ? -50 : 50, opacity: 0 }}
+      initial={{ x: reverse ? -25 : 25, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ type: "tween" }}
     >
