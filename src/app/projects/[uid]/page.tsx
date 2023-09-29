@@ -46,7 +46,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: response.data.title,
     description: response.data.resume,
     openGraph: {
+      type: "website",
+      title: response.data.title!,
+      description: response.data.resume!,
       images: [response.data.thumbnail.url!],
+      siteName: "lmiguelm",
     },
   };
 }
