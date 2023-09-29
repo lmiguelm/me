@@ -42,8 +42,8 @@ export function Clipboard({
         <Copy className="flex-1 h-4 w-4 text-muted-foreground" />
       )}
 
-      <div className="flex-1 max-sm:w-10/12">
-        <p className="text-muted-foreground text-ellipsis overflow-hidden ...">
+      <div className="flex-1">
+        <p className="text-muted-foreground max-sm:w-56 text-ellipsis overflow-hidden ...">
           {textToBeCopied}
         </p>
       </div>
