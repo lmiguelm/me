@@ -4,9 +4,12 @@ import { createClient } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
 
 import { AnimatedBorderEffect } from "@/components/animated-border-effect";
+import { Carousel } from "@/components/carousel";
 import { Image } from "@/components/image";
 import { Link } from "@/components/link";
 import { MotionDiv } from "@/components/motion-div";
+import { Subtitle } from "@/components/subtitle";
+import { Title } from "@/components/title";
 import { Separator } from "@/components/ui/separator";
 import { formatUrlParam } from "@/utils/url-param";
 import { notFound } from "next/navigation";
@@ -90,9 +93,7 @@ export default async function Page({ params }: Props) {
 
           <div className="flex flex-col items-center p-[5%] space-y-20">
             <header className="flex flex-col items-center justify-center space-y-3">
-              <h1 className="text-2xl leading-relaxed font-semibold">
-                {title}
-              </h1>
+              <Title className="leading-relaxed font-semibold">{title}</Title>
 
               <p className="text-center text-muted-foreground max-sm:text-sm">
                 {resume}
@@ -130,26 +131,14 @@ export default async function Page({ params }: Props) {
             <footer className="flex flex-col gap-20">
               {!!carousel.length && (
                 <div className="flex flex-col space-y-3">
-                  <p>📸 Slides</p>
-
-                  <div className="flex gap-3 overflow-x-auto">
-                    {carousel.map(({ image }) => (
-                      <Image
-                        alt=""
-                        key={image.url}
-                        field={image}
-                        height={500}
-                        width={500}
-                        className="rounded aspect-square"
-                      />
-                    ))}
-                  </div>
+                  <Subtitle className="text-lg">📸 Imagens</Subtitle>
+                  <Carousel images={carousel.map((c) => c.image)} />
                 </div>
               )}
 
               {(video as any).url && (
                 <div className="flex flex-col space-y-3">
-                  <p>📽️ Vídeo demonstrativo</p>
+                  <Subtitle>📽️ Vídeo demonstrativo</Subtitle>
 
                   <video
                     className="aspect-square"
