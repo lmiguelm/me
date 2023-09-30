@@ -21,10 +21,16 @@ export async function Tags({ tag, currentPage = 1 }: Props) {
 
   const response = await client.getByType("project", {
     filters: [filter.at("document.tags", [parsedTag])],
-    orderings: {
-      field: "document.first_publication_date",
-      direction: "desc",
-    },
+    orderings: [
+      {
+        field: "my.project.isstarred",
+        direction: "desc",
+      },
+      {
+        field: "document.first_publication_date",
+        direction: "desc",
+      },
+    ],
     fetch: [
       "project.title",
       "project.resume",
