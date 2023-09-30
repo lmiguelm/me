@@ -22,7 +22,10 @@ export default function RootLayout({
   return (
     <>
       <Suspense fallback={<Skeleton className="w-full h-14" />}>
-        <Header />
+        <Header.Root>
+          <Header.Content />
+          <Header.Footer />
+        </Header.Root>
       </Suspense>
 
       <LinearBackground
