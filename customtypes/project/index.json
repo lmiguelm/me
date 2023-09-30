@@ -23,6 +23,15 @@
           "thumbnails": []
         }
       },
+      "isstarred": {
+        "type": "Boolean",
+        "config": {
+          "label": "Projeto favoritado",
+          "placeholder_false": "Não",
+          "placeholder_true": "Sim",
+          "default_value": false
+        }
+      },
       "title": {
         "type": "Text",
         "config": {

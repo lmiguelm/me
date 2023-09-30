@@ -1,4 +1,5 @@
 import { createClient } from "@/prismicio";
+import { filter } from "@prismicio/client";
 
 import { LinearBackground } from "@/components/linear-background";
 import { Link } from "@/components/link";
@@ -11,6 +12,8 @@ export async function ProjectsSection() {
   const projects = await client.getAllByType("project", {
     limit: 3,
     orderings: { field: "document.first_publication_date", direction: "desc" },
+    fetch: ["project.thumbnail", "project.title", "project.isstarred"],
+    filters: [filter.at("my.project.isstarred", true)],
   });
 
   return (

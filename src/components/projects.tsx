@@ -16,15 +16,22 @@ export async function Projects({ currentPage = 1 }: Props) {
   const client = createClient();
 
   const response = await client.getByType("project", {
-    orderings: {
-      field: "document.first_publication_date",
-      direction: "desc",
-    },
+    orderings: [
+      {
+        field: "my.project.isstarred",
+        direction: "desc",
+      },
+      {
+        field: "document.first_publication_date",
+        direction: "desc",
+      },
+    ],
     fetch: [
       "project.title",
       "project.resume",
       "project.thumbnail",
       "project.content",
+      "project.isstarred",
     ],
     pageSize: 5,
     page: currentPage,
@@ -50,6 +57,7 @@ export async function Projects({ currentPage = 1 }: Props) {
               tags: project.tags,
               publication_date: new Date(project.first_publication_date),
               content: asText(project.data.content),
+              isStarred: !!project.data.isstarred,
             }}
           />
 

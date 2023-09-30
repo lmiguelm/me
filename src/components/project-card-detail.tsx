@@ -1,14 +1,15 @@
 import { ImageField, KeyTextField } from "@prismicio/client";
 import NextLink from "next/link";
 
-// import { formatUrlParam } from "@/utils/url-param";
 import { formatDateToNow } from "@/utils/format-date-to-now";
 import { getReadingTime } from "@/utils/get-reading-time";
 import { formatUrlParam } from "@/utils/url-param";
+
 import { AnimatedBorderEffect } from "./animated-border-effect";
 import { Image } from "./image";
 import { Link } from "./link";
 import { MotionDiv } from "./motion-div";
+import { Star } from "./star";
 import { Title } from "./title";
 import { Separator } from "./ui/separator";
 
@@ -20,6 +21,7 @@ type Data = {
   tags: string[];
   publication_date: Date;
   content: string;
+  isStarred: boolean;
 };
 
 type Props = {
@@ -58,7 +60,11 @@ export function ProjectCardDetail({ reverse = false, data }: Props) {
               <span>{getReadingTime(data.content)}</span>
             </div>
 
-            <Title>{data.title}</Title>
+            <div className="flex items-center gap-4">
+              {data.isStarred && <Star />}
+
+              <Title>{data.title}</Title>
+            </div>
 
             <div className="bg-highlight/50 backdrop-blur-md p-3 rounded border w-full">
               <p className="leading-relaxed text-sm text-justify">

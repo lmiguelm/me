@@ -259,6 +259,18 @@ interface ProjectDocumentData {
   thumbnail: prismic.ImageField<never>;
 
   /**
+   * Projeto favoritado field in *Project*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: project.isstarred
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  isstarred: prismic.BooleanField;
+
+  /**
    * title field in *Project*
    *
    * - **Field Type**: Text
