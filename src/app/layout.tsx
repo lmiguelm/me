@@ -11,6 +11,11 @@ export const metadata: Metadata = {
     default: "lmiguelm",
   },
   description: "Portfólio de Luis Miguel",
+  manifest: "/manifest.json",
+  icons: {
+    apple: "/icon.png",
+  },
+  themeColor: "#FFFFFF",
 };
 
 export default function RootLayout({
@@ -20,22 +25,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning suppressContentEditableWarning>
-      <head>
-        <link
-          rel="icon"
-          href="/favicon.ico"
-          sizes="32x32"
-          type="image/x-icon"
-        />
-
-        <link
-          rel="icon"
-          href="/favicon.ico"
-          sizes="16x16"
-          type="image/x-icon"
-        />
-      </head>
-
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           {children}
