@@ -129,7 +129,10 @@ export default async function Page({ params }: Props) {
             </main>
 
             <footer className="flex flex-col gap-20">
-              <ProjectSection exists={!!carousel.length} title="📸 Imagens">
+              <ProjectSection
+                exists={!!carousel[0]?.image.url}
+                title="📸 Imagens"
+              >
                 <Carousel images={carousel.map((c) => c.image)} />
               </ProjectSection>
 
