@@ -8,11 +8,11 @@ import { Carousel } from "@/components/carousel";
 import { Image } from "@/components/image";
 import { Link } from "@/components/link";
 import { MotionDiv } from "@/components/motion-div";
-import { Subtitle } from "@/components/subtitle";
 import { Title } from "@/components/title";
 import { Separator } from "@/components/ui/separator";
 import { formatUrlParam } from "@/utils/url-param";
 import { notFound } from "next/navigation";
+import { ProjectSection } from "./components/project-section";
 
 type Props = {
   params: {
@@ -124,45 +124,37 @@ export default async function Page({ params }: Props) {
               </div>
             </header>
 
-            <main className="prose prose-system max-sm:prose-sm text-justify prose-headings:">
+            <main className="prose prose-system max-sm:prose-sm text-justify">
               <PrismicRichText field={content} />
             </main>
 
             <footer className="flex flex-col gap-20">
-              {!!carousel.length && (
-                <div className="flex flex-col space-y-3">
-                  <Subtitle className="text-lg">📸 Imagens</Subtitle>
-                  <Carousel images={carousel.map((c) => c.image)} />
+              <ProjectSection exists={!!carousel.length} title="📸 Imagens">
+                <Carousel images={carousel.map((c) => c.image)} />
+              </ProjectSection>
+
+              <ProjectSection
+                exists={(video as any).url}
+                title="📽️ Vídeo demonstrativo"
+              >
+                <video
+                  className="aspect-video"
+                  src={(video as any).url}
+                  controls
+                />
+              </ProjectSection>
+
+              <ProjectSection exists={!!tags.length} title="🔗 Tags">
+                <div className="flex gap-3 text-muted-foreground">
+                  {tags.map((tag) => (
+                    <Link
+                      key={tag}
+                      title={tag}
+                      href={`/tag/${formatUrlParam(tag)}`}
+                    />
+                  ))}
                 </div>
-              )}
-
-              {(video as any).url && (
-                <div className="flex flex-col space-y-3">
-                  <Subtitle>📽️ Vídeo demonstrativo</Subtitle>
-
-                  <video
-                    className="aspect-square"
-                    src={(video as any).url}
-                    controls
-                  />
-                </div>
-              )}
-
-              {!!tags.length && (
-                <div className="flex flex-col gap-3">
-                  <p>🔗 Tags </p>
-
-                  <div className="flex gap-3 text-muted-foreground">
-                    {tags.map((tag) => (
-                      <Link
-                        key={tag}
-                        title={tag}
-                        href={`/projects/tag/${formatUrlParam(tag)}`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              )}
+              </ProjectSection>
             </footer>
           </div>
         </div>
