@@ -47,9 +47,9 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@slicemachine/adapter-next": "^0.3.16",
+    "@slicemachine/adapter-next": "^0.3.18",
     "@tailwindcss/typography": "^0.5.10",
     "@types/react-lottie": "^1.2.6",
-    "slice-machine-ui": "^1.14.0"
+    "slice-machine-ui": "^1.15.0"
   }
 }
