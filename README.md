@@ -11,7 +11,7 @@ Veja toda meus projetos e minha trajetória no mundo da porgramação.
 🔛 **Acesse agora mesmo: [lmiguelm](https://lmiguelm.com).**
 
 
-[<video src=".github/upload-ai.mp4" controls="controls"></video>](https://github.com/lmiguelm/me/assets/47677312/c7e8ba65-f2bd-4304-ae1d-014faad84646)
+[<video src=".github/video.mp4" controls="controls"></video>](https://github.com/lmiguelm/me/assets/47677312/c7e8ba65-f2bd-4304-ae1d-014faad84646)
 
 
 ## 🚀 Tecnologias:
