@@ -29,7 +29,7 @@ export function SubHeader(props: Props) {
         <div>
           {!!props.links &&
             props.links.map((link, index) => (
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3" key={link.url}>
                 <Link
                   target="_blank"
                   rel="noopener noreferrer"

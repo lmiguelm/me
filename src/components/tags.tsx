@@ -30,6 +30,7 @@ export async function Tags({ tag, currentPage = 1 }: Props) {
       "project.resume",
       "project.thumbnail",
       "project.content",
+      "project.isstarred",
     ],
     pageSize: 5,
     page: currentPage,
@@ -66,6 +67,7 @@ export async function Tags({ tag, currentPage = 1 }: Props) {
               tags: project.tags,
               content: asText(project.data.content),
               publication_date: new Date(project.first_publication_date),
+              isStarred: !!project.data.isstarred,
             }}
           />
 

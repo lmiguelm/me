@@ -23,7 +23,7 @@ export function Carousel(props: Props) {
       emulateTouch
     >
       {props.images.map((image) => (
-        <Image key={image.url} field={image} className="object-fill" />
+        <Image alt="" key={image.url} field={image} className="object-fill" />
       ))}
     </RSCarousel>
   );
