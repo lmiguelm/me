@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { twMerge } from "tailwind-merge";
 
 import { ThemeProvider } from "@/contexts/theme-provider";
 
@@ -48,7 +49,12 @@ export default function RootLayout({
         />
       </head>
 
-      <body className={inter.className}>
+      <body
+        className={twMerge(
+          inter.className,
+          "scrollbar-thin scrollbar-track-background scrollbar-thumb-highlight"
+        )}
+      >
         <ThemeProvider attribute="class" defaultTheme="dark">
           {children}
         </ThemeProvider>
