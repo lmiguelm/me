@@ -137,7 +137,7 @@ export default async function Page({ params }: Props) {
               </ProjectSection>
 
               <ProjectSection
-                exists={(video as any).url}
+                exists={!!(video as any).url}
                 title="📽️ Vídeo demonstrativo"
               >
                 <video
