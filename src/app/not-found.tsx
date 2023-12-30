@@ -1,14 +1,14 @@
-import { Suspense } from "react";
+import { Suspense } from 'react'
 
-import { AnimatedBorderEffect } from "@/components/animated-border-effect";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { LinearBackground } from "@/components/linear-background";
-import { Subtitle } from "@/components/subtitle";
-import { Title } from "@/components/title";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import Link from "next/link";
+import { AnimatedBorderEffect } from '@/components/animated-border-effect'
+import { Footer } from '@/components/footer'
+import { Header } from '@/components/header'
+import { LinearBackground } from '@/components/linear-background'
+import { Subtitle } from '@/components/subtitle'
+import { Title } from '@/components/title'
+import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
+import Link from 'next/link'
 
 export default function NotFound() {
   return (
@@ -49,5 +49,5 @@ export default function NotFound() {
         <Footer />
       </Suspense>
     </>
-  );
+  )
 }

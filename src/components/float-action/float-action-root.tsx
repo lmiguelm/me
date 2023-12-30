@@ -1,9 +1,9 @@
-import React from "react";
-import { MotionDiv } from "../motion-div";
+import React from 'react'
+import { MotionDiv } from '../motion-div'
 
 type Props = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 export function FloatActionRoot({ children }: Props) {
   return (
@@ -13,5 +13,5 @@ export function FloatActionRoot({ children }: Props) {
     >
       {children}
     </MotionDiv>
-  );
+  )
 }

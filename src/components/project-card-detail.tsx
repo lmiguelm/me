@@ -1,40 +1,40 @@
-import { ImageField, KeyTextField } from "@prismicio/client";
-import NextLink from "next/link";
+import { ImageField, KeyTextField } from '@prismicio/client'
+import NextLink from 'next/link'
 
-import { formatDateToNow } from "@/utils/format-date-to-now";
-import { getReadingTime } from "@/utils/get-reading-time";
-import { formatUrlParam } from "@/utils/url-param";
+import { formatDateToNow } from '@/utils/format-date-to-now'
+import { getReadingTime } from '@/utils/get-reading-time'
+import { formatUrlParam } from '@/utils/url-param'
 
-import { AnimatedBorderEffect } from "./animated-border-effect";
-import { Image } from "./image";
-import { Link } from "./link";
-import { MotionDiv } from "./motion-div";
-import { Star } from "./star";
-import { Title } from "./title";
-import { Separator } from "./ui/separator";
+import { AnimatedBorderEffect } from './animated-border-effect'
+import { Image } from './image'
+import { Link } from './link'
+import { MotionDiv } from './motion-div'
+import { Star } from './star'
+import { Title } from './title'
+import { Separator } from './ui/separator'
 
 type Data = {
-  url: string;
-  title: KeyTextField;
-  resume: KeyTextField;
-  thumbnail: ImageField;
-  tags: string[];
-  publication_date: Date;
-  content: string;
-  isStarred: boolean;
-};
+  url: string
+  title: KeyTextField
+  resume: KeyTextField
+  thumbnail: ImageField
+  tags: string[]
+  publication_date: Date
+  content: string
+  isStarred: boolean
+}
 
 type Props = {
-  reverse?: boolean;
-  data: Data;
-};
+  reverse?: boolean
+  data: Data
+}
 
 export function ProjectCardDetail({ reverse = false, data }: Props) {
   return (
     <MotionDiv
       initial={{ x: reverse ? -25 : 25, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      transition={{ type: "tween" }}
+      transition={{ type: 'tween' }}
     >
       <div
         data-reverse={reverse}
@@ -108,5 +108,5 @@ export function ProjectCardDetail({ reverse = false, data }: Props) {
         </div>
       </div>
     </MotionDiv>
-  );
+  )
 }

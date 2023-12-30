@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@radix-ui/react-navigation-menu";
+} from '@radix-ui/react-navigation-menu'
 
-import Link from "next/link";
+import Link from 'next/link'
 
-import { routesNames } from "@/utils/routes";
+import { routesNames } from '@/utils/routes'
 
-import { navigationMenuTriggerStyle } from "./ui/navigation-menu";
+import { navigationMenuTriggerStyle } from './ui/navigation-menu'
 
 export function NavigationLinks() {
   return (
@@ -23,7 +23,7 @@ export function NavigationLinks() {
               <NavigationMenuLink
                 className={navigationMenuTriggerStyle({
                   className:
-                    "text-muted-foreground bg-transparent hover:bg-transparent",
+                    'text-muted-foreground bg-transparent hover:bg-transparent',
                 })}
               >
                 {name}
@@ -33,5 +33,5 @@ export function NavigationLinks() {
         ))}
       </NavigationMenuList>
     </NavigationMenu>
-  );
+  )
 }

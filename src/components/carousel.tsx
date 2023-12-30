@@ -1,14 +1,14 @@
-"use client";
+'use client'
 
-import { ImageField } from "@prismicio/client";
-import { Image } from "./image";
+import { ImageField } from '@prismicio/client'
+import { Image } from './image'
 
-import { Carousel as RSCarousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel as RSCarousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 type Props = {
-  images: ImageField[];
-};
+  images: ImageField[]
+}
 
 export function Carousel(props: Props) {
   return (
@@ -26,5 +26,5 @@ export function Carousel(props: Props) {
         <Image alt="" key={image.url} field={image} className="object-fill" />
       ))}
     </RSCarousel>
-  );
+  )
 }

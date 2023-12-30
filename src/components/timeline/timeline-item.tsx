@@ -1,14 +1,14 @@
-import { format, formatDistance } from "date-fns";
-import { ptBR } from "date-fns/locale";
-import { ComponentProps } from "react";
-import { MotionDiv } from "../motion-div";
-import { Separator } from "../ui/separator";
+import { format, formatDistance } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import { ComponentProps } from 'react'
+import { MotionDiv } from '../motion-div'
+import { Separator } from '../ui/separator'
 
-type Props = ComponentProps<"ol"> & {
-  startDate?: Date | null;
-  endDate?: Date | null;
-  index?: number;
-};
+type Props = ComponentProps<'ol'> & {
+  startDate?: Date | null
+  endDate?: Date | null
+  index?: number
+}
 
 export function TimeLineItem({
   index = 1,
@@ -17,24 +17,24 @@ export function TimeLineItem({
   ...props
 }: Props) {
   function formatDate(date: Date, isSameMonth: boolean) {
-    return format(date, `${isSameMonth ? "dd" : ""} MMM 'de' yyyy`, {
+    return format(date, `${isSameMonth ? 'dd' : ''} MMM 'de' yyyy`, {
       locale: ptBR,
-    });
+    })
   }
 
   function formatDistanceFromStartAndEndDate(
     startDate: Date,
-    endDate?: Date | null
+    endDate?: Date | null,
   ) {
-    return formatDistance(startDate, endDate || new Date(), { locale: ptBR });
+    return formatDistance(startDate, endDate || new Date(), { locale: ptBR })
   }
 
   return (
     <li className="flex flex-col max-w-2xl">
       <MotionDiv
-        initial={{ x: index % 2 == 0 ? 25 : -25, opacity: 0 }}
+        initial={{ x: index % 2 === 0 ? 25 : -25, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ type: "tween", duration: 0.6 }}
+        transition={{ type: 'tween', duration: 0.6 }}
       >
         <div className="flex-start flex items-center pt-3">
           <div className="-ml-[5px] mr-3 h-[9px] w-[9px] rounded-full bg-primary" />
@@ -46,7 +46,7 @@ export function TimeLineItem({
                 <span>
                   {formatDate(
                     startDate,
-                    startDate.getMonth() === endDate?.getMonth()
+                    startDate.getMonth() === endDate?.getMonth(),
                   )}
                 </span>
               )}
@@ -55,7 +55,7 @@ export function TimeLineItem({
                 <span>
                   {formatDate(
                     endDate,
-                    startDate?.getMonth() === endDate.getMonth()
+                    startDate?.getMonth() === endDate.getMonth(),
                   )}
                 </span>
               )}
@@ -78,5 +78,5 @@ export function TimeLineItem({
         </div>
       </MotionDiv>
     </li>
-  );
+  )
 }

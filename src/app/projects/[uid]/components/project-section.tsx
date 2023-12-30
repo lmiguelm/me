@@ -1,15 +1,15 @@
-import { Subtitle } from "@/components/subtitle";
-import React from "react";
+import { Subtitle } from '@/components/subtitle'
+import React from 'react'
 
 type Props = {
-  title: string;
-  children: React.ReactNode;
-  exists?: boolean;
-};
+  title: string
+  children: React.ReactNode
+  exists?: boolean
+}
 
 export function ProjectSection({ exists = true, ...props }: Props) {
   if (!exists) {
-    return null;
+    return null
   }
 
   return (
@@ -18,5 +18,5 @@ export function ProjectSection({ exists = true, ...props }: Props) {
 
       {props.children}
     </div>
-  );
+  )
 }

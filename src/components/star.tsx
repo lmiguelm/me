@@ -1,8 +1,8 @@
-"use client";
+'use client'
 
-import { Star as LucidStar } from "lucide-react";
+import { Star as LucidStar } from 'lucide-react'
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 
 export function Star() {
   return (
@@ -16,7 +16,7 @@ export function Star() {
         scale: 1,
       }}
       transition={{
-        type: "spring",
+        type: 'spring',
       }}
       whileHover={{
         scale: 1.25,
@@ -24,5 +24,5 @@ export function Star() {
     >
       <LucidStar className="fill-yellow-500 w-4 h-4 text-yellow-500/80 mt-1" />
     </motion.div>
-  );
+  )
 }

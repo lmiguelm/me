@@ -1,13 +1,13 @@
-import { Image } from "@/components/image";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { createClient } from "@/prismicio";
+import { Image } from '@/components/image'
+import { AspectRatio } from '@/components/ui/aspect-ratio'
+import { createClient } from '@/prismicio'
 
 export async function AvatarSection() {
-  const client = createClient();
+  const client = createClient()
 
-  const { data } = await client.getSingle("home", {
-    fetch: ["home.avatar"],
-  });
+  const { data } = await client.getSingle('home', {
+    fetch: ['home.avatar'],
+  })
 
   return (
     <div className="flex-1 overflow-hidden rounded flex items-center justify-center">
@@ -21,5 +21,5 @@ export async function AvatarSection() {
         />
       </AspectRatio>
     </div>
-  );
+  )
 }

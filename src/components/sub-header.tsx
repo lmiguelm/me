@@ -1,21 +1,21 @@
-import { LinearBackground } from "./linear-background";
-import { Link } from "./link";
-import { MotionDiv } from "./motion-div";
-import { Title } from "./title";
-import { Separator } from "./ui/separator";
+import { LinearBackground } from './linear-background'
+import { Link } from './link'
+import { MotionDiv } from './motion-div'
+import { Title } from './title'
+import { Separator } from './ui/separator'
 
 type Props = {
-  title?: string;
-  message?: string;
-  links?: { url: string; title: string }[];
-};
+  title?: string
+  message?: string
+  links?: { url: string; title: string }[]
+}
 
 export function SubHeader(props: Props) {
   return (
     <MotionDiv
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ type: "spring" }}
+      transition={{ type: 'spring' }}
       className="w-full"
     >
       <LinearBackground
@@ -38,7 +38,7 @@ export function SubHeader(props: Props) {
                   title={link.title}
                 />
 
-                {index !== props.links?.length! - 1 && (
+                {index !== props.links?.length - 1 && (
                   <Separator orientation="vertical" className="h-3" />
                 )}
               </div>
@@ -46,5 +46,5 @@ export function SubHeader(props: Props) {
         </div>
       </LinearBackground>
     </MotionDiv>
-  );
+  )
 }

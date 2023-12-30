@@ -1,18 +1,18 @@
-"use client";
+'use client'
 
-import React from "react";
+import React from 'react'
 
 import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
   Tooltip as TooltipUI,
-} from "./ui/tooltip";
+} from './ui/tooltip'
 
 type Props = {
-  children: React.ReactNode;
-  message: string;
-};
+  children: React.ReactNode
+  message: string
+}
 
 export function Tooltip(props: Props) {
   return (
@@ -25,5 +25,5 @@ export function Tooltip(props: Props) {
         </TooltipContent>
       </TooltipUI>
     </TooltipProvider>
-  );
+  )
 }

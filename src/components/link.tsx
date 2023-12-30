@@ -1,10 +1,10 @@
-import NextLink, { LinkProps } from "next/link";
+import NextLink, { LinkProps } from 'next/link'
 
 type Props = Partial<LinkProps> & {
-  title: string;
-  target?: string;
-  rel?: string;
-};
+  title: string
+  target?: string
+  rel?: string
+}
 
 export function Link({ title, ...props }: Props) {
   return (
@@ -13,5 +13,5 @@ export function Link({ title, ...props }: Props) {
         {title}
       </span>
     </NextLink>
-  );
+  )
 }

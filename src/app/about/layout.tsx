@@ -1,23 +1,23 @@
-import { Suspense } from "react";
+import { Suspense } from 'react'
 
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 
-import { FloatAction } from "@/components/float-action";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { LinearBackground } from "@/components/linear-background";
-import { Skeleton } from "@/components/ui/skeleton";
-import "../../global.css";
+import { FloatAction } from '@/components/float-action'
+import { Footer } from '@/components/footer'
+import { Header } from '@/components/header'
+import { LinearBackground } from '@/components/linear-background'
+import { Skeleton } from '@/components/ui/skeleton'
+import '../../global.css'
 
 export const metadata: Metadata = {
-  title: "Projetos",
-  description: "Projetos desenvolvidos por Luis Miguel",
-};
+  title: 'Projetos',
+  description: 'Projetos desenvolvidos por Luis Miguel',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <>
@@ -47,5 +47,5 @@ export default function RootLayout({
         <Footer />
       </Suspense>
     </>
-  );
+  )
 }

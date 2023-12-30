@@ -1,4 +1,4 @@
-import { PrismicNextImage, PrismicNextImageProps } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextImageProps } from '@prismicio/next'
 
 export async function Image(props: PrismicNextImageProps) {
   const shimmer = (w: number, h: number) => `
@@ -14,15 +14,15 @@ export async function Image(props: PrismicNextImageProps) {
       <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
       <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
     </svg>
-  `;
+  `
 
-  const toBase64 = (str: string) => Buffer.from(str).toString("base64");
+  const toBase64 = (str: string) => Buffer.from(str).toString('base64')
 
   return (
     <PrismicNextImage
       {...props}
       placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-      alt={props.alt ?? ""}
+      alt={props.alt ?? ''}
     />
-  );
+  )
 }

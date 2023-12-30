@@ -1,39 +1,38 @@
-"use client";
+'use client'
 
-import { motion, MotionProps, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, MotionProps, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
 type Props = MotionProps & {
-  className?: string;
-  index?: number;
-};
+  className?: string
+}
 
-export function MotionDiv({ index = 1, ...props }: Props) {
-  const motionDivRef = useRef<HTMLDivElement>(null);
+export function MotionDiv({ ...props }: Props) {
+  const motionDivRef = useRef<HTMLDivElement>(null)
 
-  const isInView = useInView(motionDivRef);
+  const isInView = useInView(motionDivRef)
 
   const animationFromValue = props.initial ?? {
     opacity: 0.75,
     scale: 0.9,
     translateY: 20,
     rotateX: 10,
-  };
+  }
 
   const animateToValue = props.animate ?? {
     opacity: 1,
     scale: 1,
     translateY: 0,
     rotateX: 0,
-  };
+  }
 
-  const animationIsInView = isInView ? animateToValue : animationFromValue;
+  const animationIsInView = isInView ? animateToValue : animationFromValue
 
   return (
     <motion.div
       ref={motionDivRef}
       transition={{
-        type: "spring",
+        type: 'spring',
       }}
       {...props}
       initial={animationFromValue}
@@ -41,5 +40,5 @@ export function MotionDiv({ index = 1, ...props }: Props) {
     >
       {props.children}
     </motion.div>
-  );
+  )
 }

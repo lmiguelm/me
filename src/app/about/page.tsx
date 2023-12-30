@@ -1,32 +1,32 @@
-import { Metadata } from "next";
+import { Metadata } from 'next'
 
-import { createClient } from "@/prismicio";
-import { asText } from "@prismicio/client";
-import { PrismicRichText } from "@prismicio/react";
+import { createClient } from '@/prismicio'
+import { asText } from '@prismicio/client'
+import { PrismicRichText } from '@prismicio/react'
 
-import { Link } from "@/components/link";
-import { SubHeader } from "@/components/sub-header";
-import { Timeline } from "@/components/timeline";
-import { Title } from "@/components/title";
+import { Link } from '@/components/link'
+import { SubHeader } from '@/components/sub-header'
+import { Timeline } from '@/components/timeline'
+import { Title } from '@/components/title'
 
 export const metadata: Metadata = {
-  title: "Sobre",
-  description: "Aqui você pode ver toda minha trajetória em programação.",
-};
+  title: 'Sobre',
+  description: 'Aqui você pode ver toda minha trajetória em programação.',
+}
 
 export default async function Page() {
-  const client = createClient();
+  const client = createClient()
 
-  const { data } = await client.getSingle("about");
+  const { data } = await client.getSingle('about')
 
-  const { title, description, timeline, curriculum } = data;
+  const { title, description, timeline, curriculum } = data
 
   return (
     <div className="flex flex-col items-center min-h-screen space-y-20">
       <SubHeader
-        title={title!}
+        title={title ?? ''}
         message={asText(description)}
-        links={[{ title: "Ver currículo", url: (curriculum as any).url }]}
+        links={[{ title: 'Ver currículo', url: curriculum.url }]}
       />
 
       <Timeline.Root>
@@ -44,13 +44,13 @@ export default async function Page() {
                 <PrismicRichText field={content} />
               </div>
 
-              {!!(credential as any).url && (
-                <Link href={(credential as any).url} title="Ver credencial" />
+              {!!credential.url && (
+                <Link href={credential.url} title="Ver credencial" />
               )}
             </Timeline.Item>
-          )
+          ),
         )}
       </Timeline.Root>
     </div>
-  );
+  )
 }

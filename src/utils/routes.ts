@@ -1,14 +1,14 @@
 export const routesNames = [
   {
-    name: "Home",
-    path: "/",
+    name: 'Home',
+    path: '/',
   },
   {
-    name: "Sobre",
-    path: "/about",
+    name: 'Sobre',
+    path: '/about',
   },
   {
-    name: "Projetos",
-    path: "/projects",
+    name: 'Projetos',
+    path: '/projects',
   },
-];
+]

@@ -1,5 +1,5 @@
-import { Projects } from "@/components/projects";
+import { Projects } from '@/components/projects'
 
 export default async function ProjectsPage() {
-  return <Projects />;
+  return <Projects />
 }

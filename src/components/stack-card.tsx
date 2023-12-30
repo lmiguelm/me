@@ -1,24 +1,24 @@
-import Link from "next/link";
-import { twMerge } from "tailwind-merge";
+import Link from 'next/link'
+import { twMerge } from 'tailwind-merge'
 
-import { PrismicNextImageProps } from "@prismicio/next";
+import { PrismicNextImageProps } from '@prismicio/next'
 
-import { Image } from "@/components/image";
-import { Tooltip } from "@/components/tooltip";
-import { AspectRatio } from "./ui/aspect-ratio";
+import { Image } from '@/components/image'
+import { Tooltip } from '@/components/tooltip'
+import { AspectRatio } from './ui/aspect-ratio'
 
 type Props = PrismicNextImageProps & {
-  url: string;
-};
+  url: string
+}
 
 export function StackCard({ url, ...props }: Props) {
   return (
-    <Tooltip message={props.field?.alt ?? ""}>
+    <Tooltip message={props.field?.alt ?? ''}>
       <Link rel="noopener noreferrer" target="_blank" href={url}>
         <div
           className={twMerge(
             `bg-gradient-to-r from-background p-3 h-[90px] max-sm:h-[60px] hover:bg-current/5 rounded transition-colors flex justify-center items-center`,
-            `to-highlight`
+            `to-highlight`,
           )}
         >
           <AspectRatio
@@ -36,5 +36,5 @@ export function StackCard({ url, ...props }: Props) {
         </div>
       </Link>
     </Tooltip>
-  );
+  )
 }

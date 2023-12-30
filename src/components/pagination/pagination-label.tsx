@@ -1,7 +1,7 @@
 type Props = {
-  currentPage: number;
-  totalPages: number;
-};
+  currentPage: number
+  totalPages: number
+}
 
 export function PaginationLabel(props: Props) {
   return (
@@ -11,5 +11,5 @@ export function PaginationLabel(props: Props) {
       <span>de</span>
       <span className="font-semibold">{props.totalPages}</span>
     </div>
-  );
+  )
 }

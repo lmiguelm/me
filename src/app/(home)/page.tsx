@@ -1,17 +1,17 @@
-import { AnimatedBorderEffect } from "@/components/animated-border-effect";
-import { MotionDiv } from "@/components/motion-div";
+import { AnimatedBorderEffect } from '@/components/animated-border-effect'
+import { MotionDiv } from '@/components/motion-div'
 
-import { Skeleton } from "@/components/ui/skeleton";
-import { Suspense } from "react";
-import { AboutSection } from "./sections/about-section";
-import { AvatarSection } from "./sections/avatar-section";
-import { CardsSection } from "./sections/cards-section";
-import { ContactSection } from "./sections/contact-section";
-import { LogoSection } from "./sections/logo-section";
-import { ProjectsSection } from "./sections/projects-section";
-import { SocialMediaSection } from "./sections/social-media-section";
-import { StacksSection } from "./sections/stacks-section";
-import { TitleSection } from "./sections/title-section";
+import { Skeleton } from '@/components/ui/skeleton'
+import { Suspense } from 'react'
+import { AboutSection } from './sections/about-section'
+import { AvatarSection } from './sections/avatar-section'
+import { CardsSection } from './sections/cards-section'
+import { ContactSection } from './sections/contact-section'
+import { LogoSection } from './sections/logo-section'
+import { ProjectsSection } from './sections/projects-section'
+import { SocialMediaSection } from './sections/social-media-section'
+import { StacksSection } from './sections/stacks-section'
+import { TitleSection } from './sections/title-section'
 
 export default async function Home() {
   return (
@@ -31,7 +31,7 @@ export default async function Home() {
             rotateX: 0,
           }}
           transition={{
-            type: "spring",
+            type: 'spring',
           }}
         >
           <div className="flex-1 p-3 rounded-lg grid gap-3 max-sm:p-[30px] bg-background">
@@ -86,5 +86,5 @@ export default async function Home() {
         </MotionDiv>
       </AnimatedBorderEffect>
     </div>
-  );
+  )
 }

@@ -1,51 +1,51 @@
-import { notFound } from "next/navigation";
-import React from "react";
+import { notFound } from 'next/navigation'
+import React from 'react'
 
-import { createClient } from "@/prismicio";
-import { asText, filter } from "@prismicio/client";
+import { createClient } from '@/prismicio'
+import { asText, filter } from '@prismicio/client'
 
-import { parseUrlParam } from "@/utils/url-param";
-import { AnimatedSeparator } from "./AnimatedSeparator";
-import { PaginationComponent } from "./pagination/pagination";
-import { ProjectCardDetail } from "./project-card-detail";
-import { SubHeader } from "./sub-header";
+import { parseUrlParam } from '@/utils/url-param'
+import { AnimatedSeparator } from './AnimatedSeparator'
+import { PaginationComponent } from './pagination/pagination'
+import { ProjectCardDetail } from './project-card-detail'
+import { SubHeader } from './sub-header'
 
 type Props = {
-  tag: string;
-  currentPage?: number;
-};
+  tag: string
+  currentPage?: number
+}
 
 export async function Tags({ tag, currentPage = 1 }: Props) {
-  const client = createClient();
-  const parsedTag = parseUrlParam(tag);
+  const client = createClient()
+  const parsedTag = parseUrlParam(tag)
 
-  const response = await client.getByType("project", {
-    filters: [filter.at("document.tags", [parsedTag])],
+  const response = await client.getByType('project', {
+    filters: [filter.at('document.tags', [parsedTag])],
     orderings: [
       {
-        field: "my.project.isstarred",
-        direction: "desc",
+        field: 'my.project.isstarred',
+        direction: 'desc',
       },
       {
-        field: "document.first_publication_date",
-        direction: "desc",
+        field: 'document.first_publication_date',
+        direction: 'desc',
       },
     ],
     fetch: [
-      "project.title",
-      "project.resume",
-      "project.thumbnail",
-      "project.content",
-      "project.isstarred",
+      'project.title',
+      'project.resume',
+      'project.thumbnail',
+      'project.content',
+      'project.isstarred',
     ],
     pageSize: 5,
     page: currentPage,
-  });
+  })
 
-  const projectQuantity = response.total_results_size;
+  const projectQuantity = response.total_results_size
 
   if (!projectQuantity) {
-    notFound();
+    notFound()
   }
 
   return (
@@ -54,10 +54,10 @@ export async function Tags({ tag, currentPage = 1 }: Props) {
         title={parsedTag}
         message={
           projectQuantity === 0
-            ? "Nenhum projeto encontrado com esta tag."
+            ? 'Nenhum projeto encontrado com esta tag.'
             : projectQuantity === 1
-            ? `${projectQuantity} projeto encontrado com esta tag.`
-            : `${projectQuantity} projetos encontrado com esta tag.`
+              ? `${projectQuantity} projeto encontrado com esta tag.`
+              : `${projectQuantity} projetos encontrado com esta tag.`
         }
       />
 
@@ -69,7 +69,7 @@ export async function Tags({ tag, currentPage = 1 }: Props) {
               title: project.data.title,
               resume: project.data.resume,
               thumbnail: project.data.thumbnail,
-              url: project.url!,
+              url: project.url ?? '',
               tags: project.tags,
               content: asText(project.data.content),
               publication_date: new Date(project.first_publication_date),
@@ -87,5 +87,5 @@ export async function Tags({ tag, currentPage = 1 }: Props) {
         defaultPath={`/tag/${tag}`}
       />
     </div>
-  );
+  )
 }

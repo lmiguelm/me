@@ -1,16 +1,16 @@
-import { PrismicRichText } from "@prismicio/react";
+import { PrismicRichText } from '@prismicio/react'
 
-import { LinearBackground } from "@/components/linear-background";
-import { Link } from "@/components/link";
-import { Subtitle } from "@/components/subtitle";
-import { createClient } from "@/prismicio";
+import { LinearBackground } from '@/components/linear-background'
+import { Link } from '@/components/link'
+import { Subtitle } from '@/components/subtitle'
+import { createClient } from '@/prismicio'
 
 export async function AboutSection() {
-  const client = createClient();
+  const client = createClient()
 
-  const { data } = await client.getSingle("home", {
-    fetch: ["home.about"],
-  });
+  const { data } = await client.getSingle('home', {
+    fetch: ['home.about'],
+  })
 
   return (
     <LinearBackground
@@ -27,5 +27,5 @@ export async function AboutSection() {
         <PrismicRichText field={data.about} />
       </main>
     </LinearBackground>
-  );
+  )
 }

@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import { motion, useScroll } from "framer-motion";
-import { Button } from "../ui/button";
+import { motion, useScroll } from 'framer-motion'
+import { Button } from '../ui/button'
 
 export function FloatActionProgress() {
-  const { scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll()
 
   return (
     <Button
@@ -34,5 +34,5 @@ export function FloatActionProgress() {
         />
       </svg>
     </Button>
-  );
+  )
 }

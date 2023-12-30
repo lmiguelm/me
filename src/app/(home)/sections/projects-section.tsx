@@ -1,20 +1,20 @@
-import { createClient } from "@/prismicio";
-import { filter } from "@prismicio/client";
+import { createClient } from '@/prismicio'
+import { filter } from '@prismicio/client'
 
-import { LinearBackground } from "@/components/linear-background";
-import { Link } from "@/components/link";
-import { ProjectCard } from "@/components/project-card";
-import { Subtitle } from "@/components/subtitle";
+import { LinearBackground } from '@/components/linear-background'
+import { Link } from '@/components/link'
+import { ProjectCard } from '@/components/project-card'
+import { Subtitle } from '@/components/subtitle'
 
 export async function ProjectsSection() {
-  const client = createClient();
+  const client = createClient()
 
-  const projects = await client.getAllByType("project", {
+  const projects = await client.getAllByType('project', {
     limit: 3,
-    orderings: { field: "document.first_publication_date", direction: "desc" },
-    fetch: ["project.thumbnail", "project.title", "project.isstarred"],
-    filters: [filter.at("my.project.isstarred", true)],
-  });
+    orderings: { field: 'document.first_publication_date', direction: 'desc' },
+    fetch: ['project.thumbnail', 'project.title', 'project.isstarred'],
+    filters: [filter.at('my.project.isstarred', true)],
+  })
 
   return (
     <LinearBackground className="col-span-2 max-lg:col-span-1 p-3 gap-6 flex flex-col rounded-lg">
@@ -28,10 +28,10 @@ export async function ProjectsSection() {
           <ProjectCard
             key={project.uid}
             data={project.data}
-            href={project.url!}
+            href={project.url ?? ''}
           />
         ))}
       </div>
     </LinearBackground>
-  );
+  )
 }

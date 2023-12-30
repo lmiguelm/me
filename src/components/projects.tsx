@@ -1,41 +1,41 @@
-import React from "react";
+import React from 'react'
 
-import { ProjectCardDetail } from "@/components/project-card-detail";
+import { ProjectCardDetail } from '@/components/project-card-detail'
 
-import { AnimatedSeparator } from "@/components/AnimatedSeparator";
-import { PaginationComponent } from "@/components/pagination/pagination";
-import { SubHeader } from "@/components/sub-header";
-import { createClient } from "@/prismicio";
-import { asText } from "@prismicio/client";
+import { AnimatedSeparator } from '@/components/AnimatedSeparator'
+import { PaginationComponent } from '@/components/pagination/pagination'
+import { SubHeader } from '@/components/sub-header'
+import { createClient } from '@/prismicio'
+import { asText } from '@prismicio/client'
 
 type Props = {
-  currentPage?: number;
-};
+  currentPage?: number
+}
 
 export async function Projects({ currentPage = 1 }: Props) {
-  const client = createClient();
+  const client = createClient()
 
-  const response = await client.getByType("project", {
+  const response = await client.getByType('project', {
     orderings: [
       {
-        field: "my.project.isstarred",
-        direction: "desc",
+        field: 'my.project.isstarred',
+        direction: 'desc',
       },
       {
-        field: "document.first_publication_date",
-        direction: "desc",
+        field: 'document.first_publication_date',
+        direction: 'desc',
       },
     ],
     fetch: [
-      "project.title",
-      "project.resume",
-      "project.thumbnail",
-      "project.content",
-      "project.isstarred",
+      'project.title',
+      'project.resume',
+      'project.thumbnail',
+      'project.content',
+      'project.isstarred',
     ],
     pageSize: 5,
     page: currentPage,
-  });
+  })
 
   return (
     <div className="flex flex-col gap-32 max-sm:gap-20 space-y-10">
@@ -53,7 +53,7 @@ export async function Projects({ currentPage = 1 }: Props) {
               title: project.data.title,
               resume: project.data.resume,
               thumbnail: project.data.thumbnail,
-              url: project.url!,
+              url: project.url ?? '',
               tags: project.tags,
               publication_date: new Date(project.first_publication_date),
               content: asText(project.data.content),
@@ -71,5 +71,5 @@ export async function Projects({ currentPage = 1 }: Props) {
         defaultPath="/projects"
       />
     </div>
-  );
+  )
 }

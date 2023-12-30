@@ -1,9 +1,9 @@
-import { Code2 } from "lucide-react";
-import Link from "next/link";
+import { Code2 } from 'lucide-react'
+import Link from 'next/link'
 
-import { Menu as MenuComponent } from "@/components/menu";
-import { NavigationLinks } from "@/components/navigation-links";
-import { Title } from "@/components/title";
+import { Menu as MenuComponent } from '@/components/menu'
+import { NavigationLinks } from '@/components/navigation-links'
+import { Title } from '@/components/title'
 
 export function HeaderContent() {
   return (
@@ -19,5 +19,5 @@ export function HeaderContent() {
 
       <NavigationLinks />
     </div>
-  );
+  )
 }

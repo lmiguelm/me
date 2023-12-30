@@ -1,28 +1,28 @@
-import type { Metadata } from "next";
-import { twMerge } from "tailwind-merge";
+import type { Metadata } from 'next'
+import { twMerge } from 'tailwind-merge'
 
-import { ThemeProvider } from "@/contexts/theme-provider";
+import { ThemeProvider } from '@/contexts/theme-provider'
 
-import "../global.css";
-import { inter } from "./fonts";
+import '../global.css'
+import { inter } from './fonts'
 
 export const metadata: Metadata = {
   title: {
-    template: "lmiguelm - %s",
-    default: "lmiguelm",
+    template: 'lmiguelm - %s',
+    default: 'lmiguelm',
   },
-  description: "Portfólio de Luis Miguel",
-  manifest: "/manifest.json",
+  description: 'Portfólio de Luis Miguel',
+  manifest: '/manifest.json',
   icons: {
-    apple: "/icon.png",
+    apple: '/icon.png',
   },
-  themeColor: "#FFFFFF",
-};
+  themeColor: '#FFFFFF',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning suppressContentEditableWarning>
@@ -52,7 +52,7 @@ export default function RootLayout({
       <body
         className={twMerge(
           inter.className,
-          "scrollbar-thin scrollbar-track-background scrollbar-thumb-highlight"
+          'scrollbar-thin scrollbar-track-background scrollbar-thumb-highlight',
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
@@ -60,5 +60,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

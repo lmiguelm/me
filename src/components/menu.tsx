@@ -1,11 +1,11 @@
-import { Code2, Menu as MenuIcon } from "lucide-react";
-import Link from "next/link";
-import { Fragment } from "react";
+import { Code2, Menu as MenuIcon } from 'lucide-react'
+import Link from 'next/link'
+import { Fragment } from 'react'
 
-import { ButtonIcon } from "./button-icon";
+import { ButtonIcon } from './button-icon'
 
-import { routesNames } from "@/utils/routes";
-import { Separator } from "./ui/separator";
+import { routesNames } from '@/utils/routes'
+import { Separator } from './ui/separator'
 
 import {
   Sheet,
@@ -14,7 +14,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "./ui/sheet";
+} from './ui/sheet'
 
 export function Menu() {
   return (
@@ -48,5 +48,5 @@ export function Menu() {
         </div>
       </SheetContent>
     </Sheet>
-  );
+  )
 }

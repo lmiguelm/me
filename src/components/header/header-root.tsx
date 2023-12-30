@@ -1,33 +1,33 @@
-"use client";
+'use client'
 
-import { motion, useScroll } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion, useScroll } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 
 type Props = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 export function HeaderRoot({ children }: Props) {
-  const previousScroll = useRef<number>(0);
+  const previousScroll = useRef<number>(0)
 
-  const { scrollYProgress } = useScroll();
+  const { scrollYProgress } = useScroll()
 
-  const [isHidden, setIsHidden] = useState(false);
+  const [isHidden, setIsHidden] = useState(false)
 
   function updateScroll(currentScroll: number) {
     if (currentScroll <= previousScroll.current) {
-      setIsHidden(false);
+      setIsHidden(false)
     } else if (currentScroll >= previousScroll.current) {
-      setIsHidden(true);
+      setIsHidden(true)
     }
 
-    previousScroll.current = currentScroll;
+    previousScroll.current = currentScroll
   }
 
   useEffect(() => {
-    scrollYProgress.on("change", updateScroll);
-    return () => scrollYProgress.clearListeners();
-  }, [scrollYProgress]);
+    scrollYProgress.on('change', updateScroll)
+    return () => scrollYProgress.clearListeners()
+  }, [scrollYProgress])
 
   return (
     <motion.header
@@ -37,5 +37,5 @@ export function HeaderRoot({ children }: Props) {
     >
       {children}
     </motion.header>
-  );
+  )
 }

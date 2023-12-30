@@ -1,30 +1,30 @@
-"use client";
+'use client'
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 
-import { Moon, Sun } from "lucide-react";
-import { ButtonIcon } from "./button-icon";
-import { ButtonProps } from "./ui/button";
+import { Moon, Sun } from 'lucide-react'
+import { ButtonIcon } from './button-icon'
+import { ButtonProps } from './ui/button'
 
 export function ToggleThemeButton(props: ButtonProps) {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme()
 
-  const [isClient, setIsClient] = useState(false);
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    setIsClient(true)
+  }, [])
 
   function handleToggleTheme() {
-    setTheme(theme === "dark" ? "light" : "dark");
+    setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
   return (
     <ButtonIcon
       {...props}
-      icon={isClient && theme === "dark" ? Moon : Sun}
+      icon={isClient && theme === 'dark' ? Moon : Sun}
       onClick={handleToggleTheme}
     />
-  );
+  )
 }

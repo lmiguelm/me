@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
 type Props = {
-  children: React.ReactNode;
-};
+  children: React.ReactNode
+}
 
 export function AnimatedBorderEffect(props: Props) {
   return (
@@ -11,5 +11,5 @@ export function AnimatedBorderEffect(props: Props) {
 
       <div className="relative">{props.children}</div>
     </div>
-  );
+  )
 }

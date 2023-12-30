@@ -1,32 +1,32 @@
-"use client";
+'use client'
 
-import { usePathname, useRouter } from "next/navigation";
-import { Pagination } from ".";
+import { usePathname, useRouter } from 'next/navigation'
+import { Pagination } from '.'
 
 type Props = {
-  currentPage: number;
-  totalPages: number;
-  defaultPath: string;
-};
+  currentPage: number
+  totalPages: number
+  defaultPath: string
+}
 
 export function PaginationComponent({
   currentPage,
   totalPages,
   defaultPath,
 }: Props) {
-  const pathName = usePathname();
-  const router = useRouter();
+  const pathName = usePathname()
+  const router = useRouter()
 
   function handleChange(index: number) {
     if (index === 1) {
-      return router.push(defaultPath);
+      return router.push(defaultPath)
     }
 
-    const isPreviousPaginatedPage = pathName.includes("/page/");
+    const isPreviousPaginatedPage = pathName.includes('/page/')
 
     router.push(
-      isPreviousPaginatedPage ? String(index) : `${defaultPath}/page/${index}`
-    );
+      isPreviousPaginatedPage ? String(index) : `${defaultPath}/page/${index}`,
+    )
   }
 
   return (
@@ -45,5 +45,5 @@ export function PaginationComponent({
         onClick={() => handleChange(currentPage + 1)}
       />
     </Pagination.Root>
-  );
+  )
 }

@@ -1,15 +1,15 @@
-"use client";
+'use client'
 
-import { Share2 } from "lucide-react";
-import { Button } from "../ui/button";
+import { Share2 } from 'lucide-react'
+import { Button } from '../ui/button'
 
 export function FloatActionShare() {
   async function handleClick() {
     await navigator.share({
       url: location.href,
-      title: "lmiguelm",
-      text: "Portfólio de Luis Miguel",
-    });
+      title: 'lmiguelm',
+      text: 'Portfólio de Luis Miguel',
+    })
   }
 
   return (
@@ -20,5 +20,5 @@ export function FloatActionShare() {
     >
       <Share2 className="w-4 h-4" />
     </Button>
-  );
+  )
 }
