@@ -1,30 +1,34 @@
 'use client'
 
 import { ImageField } from '@prismicio/client'
-import { Image } from './image'
 
-import { Carousel as RSCarousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import {
+  Carousel as CarouselUI,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel'
+
+import { Image } from './image'
 
 type Props = {
   images: ImageField[]
 }
 
-export function Carousel(props: Props) {
+export function Carousel({ images }: Props) {
   return (
-    <RSCarousel
-      autoPlay
-      infiniteLoop
-      centerMode
-      swipeable
-      useKeyboardArrows
-      showStatus
-      showIndicators={false}
-      emulateTouch
-    >
-      {props.images.map((image) => (
-        <Image alt="" key={image.url} field={image} className="object-fill" />
-      ))}
-    </RSCarousel>
+    <CarouselUI className="w-[90%] aspect-video self-center">
+      <CarouselContent>
+        {images.map((image) => (
+          <CarouselItem key={image.url}>
+            <Image field={image} alt="" />
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+
+      <CarouselPrevious />
+      <CarouselNext />
+    </CarouselUI>
   )
 }

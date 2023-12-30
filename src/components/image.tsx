@@ -22,7 +22,6 @@ export async function Image(props: PrismicNextImageProps) {
     <PrismicNextImage
       {...props}
       placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-      alt={props.alt ?? ''}
     />
   )
 }
